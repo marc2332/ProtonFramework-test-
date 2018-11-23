@@ -1,7 +1,7 @@
 
 function Main(){
     config = {
-        title : 'New Project',
+        title : 'Proton Test',
         version: "0.4",
         disable_debugger : false
     }

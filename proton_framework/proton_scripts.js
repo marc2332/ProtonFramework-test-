@@ -1,6 +1,6 @@
 var config = {   /* DEFAULT VALUES */
     disable_debugger : false,
-    title: 'New Project',
+    title: '$',
     version: '0.5'  
 
 }
@@ -10,11 +10,16 @@ window.onload = function(){
         css.setAttribute("rel","stylesheet");
         html.appendChild(css);
 
-        document.title = config["title"];   
         var style= document.createElement('script');
       style.innerHTML = "var buttons = document.getElementsByClassName('ripple'); Array.prototype.forEach.call(buttons, function (b) {b.addEventListener('click', newRipple); }); function newRipple (e) { var circle = document.createElement('div'); this.appendChild(circle); var d = Math.max(this.clientWidth, this.clientHeight); circle.style.width = circle.style.height = d + 'px'; var rect = this.getBoundingClientRect(); circle.style.left=e.clientX-rect.left-d/2+'px'; circle.style.top=e.clientY-rect.top-d/2+'px'; circle.classList.add('ripple');}";
         document.body.appendChild(style);                                                                                                               
         Main(); //Runs user code
+        if(config['title']=="undefined"){
+            document.title = 'New Project';  
+        }else{
+            document.title = config['title'];
+        }
+      
 }
 let root = document.documentElement;
 const html = document.querySelector("html");
@@ -287,8 +292,14 @@ class Button extends  HTMLElement {
         super();
       }
       connectedCallback(){
+          
         var button = document.createElement("button");
-        button.setAttribute("class",this.getAttribute("class")+" button ripple ");
+        if(this.classList.contains('fluent-design')){
+            button.setAttribute("class",this.getAttribute("class")+" button  ");
+        }else{
+            button.setAttribute("class",this.getAttribute("class")+" button ripple ");
+        }
+     
         if(this.classList.contains('material-design') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
             error("There isn't any theme defined on element by ID :  "+this.id+" .  ");
         }

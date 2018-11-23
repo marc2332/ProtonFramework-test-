@@ -14,9 +14,15 @@
 
 */
 @import "proton_framework/buttons/buttons_md.css";
+@import "proton_framework/buttons/buttons_md_outlined.css";
+@import "proton_framework/buttons/buttons_fluent.css";
+@import "proton_framework/buttons/buttons_proton.css";
 @import "proton_framework/switches/switches_md.css";
+@import "proton_framework/switches/switches_md_outlined.css";
+@import "proton_framework/switches/switches_fluent.css";
 @import "proton_framework/bars.css";
 @import "proton_framework/cards.css";
+@import "proton_framework/loader.css";
 @import "proton_framework/floating_buttons/floating_btn_md.css";
 @import "proton_framework/text.css";
 @import "proton_framework/positions.css";
