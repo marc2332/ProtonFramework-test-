@@ -1,0 +1,56 @@
+.button{
+    margin: 0 auto;
+    padding: 5px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+}
+.button.fluent-design:not(.disabled){
+    animation: button-fluent-design-hover-out linear 0.1s;
+    height: auto;
+    width: auto;
+    background: var(--PrimaryColor);
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0);
+    padding: 0px 7px;
+    margin:0px 5px;
+
+}
+
+.button.fluent-design:hover:not(.disabled){
+    animation: button-fluent-design-hover-in linear 0.1s;
+    background: var(--LightPrimaryColor);
+    cursor: pointer;
+     box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+}
+.button.fluent-design.disabled{
+    height: auto;
+    width: auto;
+    background: #4d4d4d;
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0);
+    margin:0px 5px;
+    padding: 0px 7px;
+}
+
+@keyframes button-fluent-design-hover-in{
+    from {
+        background: var(--PrimaryColor);
+        box-shadow: 0px 1px 4px rgba(0,0,0,0);
+        
+    }
+    to{
+        background: var(--LightPrimaryColor);
+        box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+    }
+}
+@keyframes button-fluent-design-hover-out{
+    from {
+        background: var(--LightPrimaryColor);
+        box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+    }
+    to{
+        background: var(--PrimaryColor);
+        box-shadow: 0px 1px 4px rgba(0,0,0,0);
+    }
+}

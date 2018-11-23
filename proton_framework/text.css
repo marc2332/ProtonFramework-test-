@@ -1,0 +1,41 @@
+.title1{
+    font-size: 30px;
+    line-height: 20px;
+    margin: 20px  0px 12px 10px;
+}
+.title2{
+    font-size: 40px;
+    line-height: 40px;
+    margin: 20px  0px 12px 10px;
+}
+.title3{
+    font-size: 50px;
+    line-height: 50px;
+    margin: 20px  0px 12px 10px;
+}
+
+p{
+    font-size:17px;
+}
+
+@media only screen and (max-width: 800px) {
+    .title1{
+        font-size: 19px;
+        line-height: 20px;
+        margin: 15px  0px 4px 10px;
+    }
+    .title2{
+        font-size: 25px;
+        line-height: 40px;
+        margin: 15px  0px 4px 10px;
+    }
+    .title3{
+        font-size: 35px;
+        line-height: 50px;
+        margin: 15px  0px 4px 10px;
+    }
+    
+    p{
+        font-size:14px;
+    }
+}

@@ -1,0 +1,37 @@
+
+:root{
+    --PrimaryColor: #2962ff;
+    --LightPrimaryColor:  #75a7ff;
+    --SecondaryColor:  #75a7ff;
+    --BasicColor: white;
+    --BackgroundColor: white;
+    --RippleEffect: white;
+}
+body{
+     margin:0; 
+     background: var(--BackgroundColor);
+}   
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+*{
+   font-family: 'Montserrat', sans-serif;
+    outline: 0;
+}
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+

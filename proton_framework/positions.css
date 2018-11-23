@@ -1,0 +1,37 @@
+.columns > div{
+    margin: 0px 10px 0px 10px;
+    -webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */    
+    flex: 1;
+}
+
+.center{
+    margin: 0 auto;
+    padding: 0;
+
+}
+.center-elements{
+    text-align: center;
+ align-items: center;
+ vertical-align: middle;
+ 
+}
+
+.columns{
+    width: auto;
+    height: auto;   
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.section{
+    border-top: 2px  solid lightgray;
+    width: auto;
+    height: auto;
+    padding:2px 0px 2px 10px;
+    margin:0;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    vertical-align: middle;
+}   
