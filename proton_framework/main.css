@@ -16,7 +16,9 @@ body{
 *{
    font-family: 'Montserrat', sans-serif;
     outline: 0;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
+
 
 
 

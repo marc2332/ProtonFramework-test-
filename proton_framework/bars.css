@@ -23,7 +23,7 @@
 
 /*Top Bar*/
 .topbar{
-    height:65px;
+    height:60px;
     width: 100%;
     background: var(--PrimaryColor);
     margin:0px;
@@ -45,7 +45,7 @@
 }
 .topbar > p{
     color:white;
-    font-size: 25px;
+    font-size: 20px;
     margin-top:17px;
 }
 
