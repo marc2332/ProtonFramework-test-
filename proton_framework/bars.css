@@ -23,7 +23,7 @@
 
 /*Top Bar*/
 .topbar{
-    height:60px;
+    height:57px;
     width: 100%;
     background: var(--PrimaryColor);
     margin:0px;
@@ -52,8 +52,8 @@
 @media only screen and (max-width: 800px) {
     .topbar > p{
         color:white;
-        font-size: 25px;
-        margin-top:20px;
+        font-size: 21px;
+        margin-top:17px;
     }
 }
 .topbar.top.godown{
