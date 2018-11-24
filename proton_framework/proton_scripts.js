@@ -92,16 +92,16 @@ function setTheme(newTheme){
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         case "Red":
-        root.style.setProperty('--PrimaryColor', "#d50000");
+        root.style.setProperty('--PrimaryColor', "red");
         root.style.setProperty('--SecondaryColor', "darkred");
         root.style.setProperty('--LightPrimaryColor', "#ef5350");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         case "Green":
-        root.style.setProperty('--PrimaryColor', "#00c853");
-        root.style.setProperty('--SecondaryColor', "darkgreen");
-        root.style.setProperty('--LightPrimaryColor', "#a5d6a7");
+        root.style.setProperty('--PrimaryColor', "#00e676");
+        root.style.setProperty('--SecondaryColor', "#43a047");
+        root.style.setProperty('--LightPrimaryColor', "#69f0ae");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
@@ -312,6 +312,7 @@ class Button extends  HTMLElement {
             error("There isn't any theme defined on element by ID :  "+this.id+" .  ");
         }
         button.setAttribute("onClick","goButton(this)");
+
         button.innerHTML = this.getAttribute("value");
         button.setAttribute("id",this.id);
 
@@ -358,8 +359,14 @@ class Spinner extends  HTMLElement {
         button.setAttribute("class"," ripple FloatingButton "+this.getAttribute("class"));
         button.setAttribute("onClick","goFloatingButton(this)");
         button.setAttribute("id",this.id);
-        button.style = "background-image: url(" + this.getAttribute("icon-src") +") ; background-repeat: no-repeat; background-position: center;"; 
-        button.innerHTML = this.getAttribute("text");
+        
+        if(this.getAttribute("text")== null){
+            button.innerHTML = ".";
+            button.style = "background-image: url(" + this.getAttribute("icon-src") +") ; background-repeat: no-repeat; background-position: center; font-size: 0;"; 
+        }else{
+            button.innerHTML = this.getAttribute("text");
+            button.style = "background-image: url(" + this.getAttribute("icon-src") +") ; background-repeat: no-repeat; background-position: center; font-size: 15px;"; 
+        }
         this.appendChild(button);    
         this.removeAttribute('id');
 

@@ -57,17 +57,3 @@
         box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
     }
 }
-
-button {
-    overflow: hidden;
-    position: relative;
-
-  }
-button .ripple {
-     border-radius: 100%;
-      background-color: var(--RippleEffect);
-       position: absolute;
-       transform: scale(0);
-       animation: ripple 0.52s linear;
-     }
-     @keyframes ripple { to {  transform: scale(2.7); opacity: 0; } }

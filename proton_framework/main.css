@@ -20,6 +20,19 @@ body{
 }
 
 
+button {
+    overflow: hidden;
+    position: relative;
+
+  }
+button .ripple {
+     border-radius: 100%;
+      background-color: var(--RippleEffect);
+       position: absolute;
+       transform: scale(0);
+       animation: ripple 0.55s linear;
+     }
+     @keyframes ripple { to {  transform: scale(4); opacity: 0; } }
 
 
      
