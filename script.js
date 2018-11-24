@@ -18,14 +18,7 @@ function Main(){
 
 }
 
-function newBar(){
-    var config ={
-        title :'Proton App Example',
-        position : 'top'
-    };
-    return config;
-    
-}
+
 function onChange(element){
     switch(element){
         case "red":

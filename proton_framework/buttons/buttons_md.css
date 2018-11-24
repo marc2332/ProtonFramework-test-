@@ -19,12 +19,11 @@
 .button.material-design:hover:not(.disabled){
     
     background: var(--LightPrimaryColor);
-    cursor: pointer;
-     
-}
-.button.material-design:active{
+    background: var(--LightPrimaryColor);
     animation: button-material-design-hover-in linear 0.1s;
     box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
+    cursor: pointer;
+     
 }
 
 .button.material-design.disabled{
@@ -40,6 +39,7 @@
 
 @keyframes button-material-design-hover-in{
     from {
+        
         box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
         
     }

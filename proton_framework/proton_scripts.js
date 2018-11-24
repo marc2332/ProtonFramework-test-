@@ -107,8 +107,8 @@ function setTheme(newTheme){
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         case "Purple":
-        root.style.setProperty('--PrimaryColor', "Purple");
-        root.style.setProperty('--SecondaryColor', "darkpurple");
+        root.style.setProperty('--PrimaryColor', "purple");
+        root.style.setProperty('--SecondaryColor', "purple");
         root.style.setProperty('--LightPrimaryColor', "#ce93d8");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
@@ -237,40 +237,37 @@ function  activate (id){
                                                 
 
         var bar = document.createElement("div");
-        var config=  newBar();
+        var position = this.getAttribute('position');
+        if(position == "top"){
+            html.style = " padding: 65px 0px 0px 0px; ";
+            bar.className   = position + " topbar godown";
+        }else if(position == "bottom"){
+            html.style = " padding: 25px 0px 80px 0px; ";
+            bar.className   = position + " topbar goup";
+        }else if(position == "top-fixed"){
+            html.style = " padding: 65px 0px 0px 0px; ";
+        }else if(position == "bottom-fixed"){
+            html.style = " padding: 25px 0px 80px 0px; ";
+        }else{
+            error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
+        }
         bar.setAttribute("id",this.id);
 
-        if(config["position"]=="top" ){
-            html.style = " padding: 65px 0px 0px 0px; ";
-            bar.setAttribute("class","topbar top ");  
-        } else if (config["position"]=="bottom" ){
-            html.style = " padding: 25px 0px 80px 0px; ";
-            bar.setAttribute("class","topbar bottom ");  
-        } else if( config["position"]=="top-fixed"){
-            html.style = " padding: 65px 0px 0px 0px; ";
-            bar.setAttribute("class","topbar top");  
-        } else if (config["position"]=="bottom-fixed"){
-            html.style = " padding: 25px 0px 80px 0px; ";
-            bar.setAttribute("class","topbar bottom");  
-        }  else{
-                error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
-                
-            }
        var title = document.createElement("p");
-       title.innerText = config["title"];
+       title.innerText = this.getAttribute('title');
        this.appendChild(bar);
        bar.appendChild(title);
        var previous = window.scrollY; /*DETECT SCROLLING*/ 
         window.addEventListener('scroll', function(){
             var direction ;
-            if(config['position']=="top"){
+            if(position=="top"){
                 window.scrollY > previous ? direction= "goup":  direction= "godown";
                 previous = window.scrollY;
                
                 if(previous>35){
                     bar.setAttribute("class","topbar top "+direction  );  
                 }
-            }else if(config['position']=="bottom"){
+            }else if(position=="bottom"){
                 window.scrollY > previous ?  direction= "godown":  direction= "goup";
                 previous = window.scrollY;
                 bar.setAttribute("class","topbar bottom "+direction  );  
