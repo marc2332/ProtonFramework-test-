@@ -14,36 +14,24 @@ function Main(){
         RippleEffect : 'Purple'
     }
     newTheme(colors);
-    setTheme("Purple");
+    setTheme("Green");
 
 }
 
 
 function onChange(element){
     switch(element){
-        case "red":
-        if(getState('red')){
-                setTheme("Red");
-        }
+        case "test1":
+            if(getState('test1')){
+                    setTheme("Red");
+            }
         break;
-        case "purple":
-        if(getState('purple')){
-                setTheme("Purple");
-        }
+        case "test2":
+            if(getState('test2')){
+                    setTheme("Green");
+            }
         break;
-        case "blue":
-        if(getState('blue')){
-                setTheme("Blue");
-        }
-        break;
-        case "green":
-        if(getState('green')){
-                setTheme("Green");
-        }
-        break;
-        case"alert1":
-            alert('testing :)');
-            break;
+        
 
     }
 }

@@ -1,10 +1,9 @@
 var config = {   /* DEFAULT VALUES */
     disable_debugger : false,
-    title: '$',
+    title: '$NewProject',
     version: '0.5'  
 
 }
-
 window.onload = function(){
         var css = document.createElement("link");
         css.setAttribute("href","proton_framework/main.css");
@@ -218,7 +217,10 @@ function  activate (id){
      body.setAttribute("onClick","goSwitch(this)");
      dot.setAttribute("class","dot_switch");
      if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
-        error("There isn't any design defined on element by ID :  "+this.id+" .  ");
+        error("There isn't any design defined on element by ID < "+this.id+" >");
+    }
+    if((this.classList.contains('activated') || this.classList.contains('desactivated'))===false  ){
+        error("You must define the state of the switch with classes 'activated' or 'desactivated' in the element by ID <  "+this.id+" > ");
     }
     this.appendChild(body);
     body.appendChild(dot);
@@ -356,6 +358,7 @@ class Spinner extends  HTMLElement {
         button.setAttribute("class"," ripple FloatingButton "+this.getAttribute("class"));
         button.setAttribute("onClick","goFloatingButton(this)");
         button.setAttribute("id",this.id);
+        button.style = "background-image: url(" + this.getAttribute("icon-src") +") ; background-repeat: no-repeat; background-position: center;"; 
         button.innerHTML = this.getAttribute("text");
         this.appendChild(button);    
         this.removeAttribute('id');

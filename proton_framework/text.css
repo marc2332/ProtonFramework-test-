@@ -1,17 +1,17 @@
 .title1{
     font-size: 30px;
     line-height: 20px;
-    margin: 20px  0px 12px 10px;
+    margin: 20px  0px 12px 0px;
 }
 .title2{
     font-size: 40px;
     line-height: 40px;
-    margin: 20px  0px 12px 10px;
+    margin: 20px  0px 12px 0px;
 }
 .title3{
     font-size: 50px;
     line-height: 50px;
-    margin: 20px  0px 12px 10px;
+    margin: 20px  0px 12px 0px;
 }
 
 p{
@@ -22,17 +22,18 @@ p{
     .title1{
         font-size: 19px;
         line-height: 20px;
-        margin: 15px  0px 4px 10px;
+        margin: 15px  0px 4px 0px;
     }
     .title2{
         font-size: 25px;
         line-height: 40px;
-        margin: 15px  0px 4px 10px;
+        margin: 15px  0px 4px 0px;
+
     }
     .title3{
         font-size: 35px;
         line-height: 50px;
-        margin: 15px  0px 4px 10px;
+        margin: 15px  0px 4px 0px;
     }
     
     p{
