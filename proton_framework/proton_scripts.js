@@ -99,9 +99,9 @@ function setTheme(newTheme){
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         case "Green":
-        root.style.setProperty('--PrimaryColor', "#00e676");
+        root.style.setProperty('--PrimaryColor', "#00c853");
         root.style.setProperty('--SecondaryColor', "#43a047");
-        root.style.setProperty('--LightPrimaryColor', "#69f0ae");
+        root.style.setProperty('--LightPrimaryColor', "#00e676");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
