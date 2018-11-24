@@ -22,7 +22,7 @@
 }
 
 /*Top Bar*/
-.topbar{
+.bar{
     height:57px;
     width: 100%;
     background: var(--PrimaryColor);
@@ -31,45 +31,45 @@
     padding-left: 15px;
     position: fixed;
 }
-.topbar.top{
+.bar.top{
     position: fixed;
     z-index: 50; 
     top: 0;  
     width: 0 auto;
 }
-.topbar.bottom{
+.bar.bottom{
     position: fixed;
     z-index: 50; 
     bottom: 0px;  
     width: 0 auto;
 }
-.topbar > p{
+.bar > p{
     color:white;
     font-size: 20px;
     margin-top:17px;
 }
 
 @media only screen and (max-width: 800px) {
-    .topbar > p{
+    .bar > p{
         color:white;
         font-size: 21px;
         margin-top:17px;
     }
 }
-.topbar.top.godown{
-    animation: godown-top linear 0.25s;
+.bar.top.godown{
+    animation: godown-top linear 0.20s;
     top:0px;
 }
-.topbar.bottom.godown{
-    animation: goup-bottom linear 0.25s;
+.bar.bottom.godown{
+    animation: goup-bottom linear 0.20s;
     bottom:-100px;
 }
-.topbar.top.goup{
-    animation: goup-top linear 0.25s;
+.bar.top.goup{
+    animation: goup-top linear 0.20s;
     top:-100px;
 }
-.topbar.bottom.goup{
-    animation: godown-bottom linear 0.25s;
+.bar.bottom.goup{
+    animation: godown-bottom linear 0.20s;
     bottom:0px;
 }
 

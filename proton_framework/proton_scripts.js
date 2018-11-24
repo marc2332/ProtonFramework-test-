@@ -217,8 +217,8 @@ function  activate (id){
      body.setAttribute("id",this.id);
      body.setAttribute("onClick","goSwitch(this)");
      dot.setAttribute("class","dot_switch");
-     if(this.classList.contains('material-design') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
-        error("There isn't any theme defined on element by ID :  "+this.id+" .  ");
+     if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
+        error("There isn't any design defined on element by ID :  "+this.id+" .  ");
     }
     this.appendChild(body);
     body.appendChild(dot);
@@ -241,14 +241,16 @@ function  activate (id){
         var position = this.getAttribute('position');
         if(position == "top"){
             html.style = " padding: 50px 0px 0px 0px; ";
-            bar.className   = position + " topbar godown";
+            bar.className   = position + " bar godown";
         }else if(position == "bottom"){
             html.style = " padding: 25px 0px 80px 0px; ";
-            bar.className   = position + " topbar goup";
+            bar.className   = position + " bar goup";
         }else if(position == "top-fixed"){
             html.style = " padding: 50px 0px 0px 0px; ";
+            bar.className   = "top" + " bar ";
         }else if(position == "bottom-fixed"){
             html.style = " padding: 25px 0px 80px 0px; ";
+            bar.className   = "bottom" + " bar ";
         }else{
         error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
 
@@ -271,12 +273,12 @@ function  activate (id){
                 previous = window.scrollY;
                
                 if(previous>35){
-                    bar.setAttribute("class","topbar top "+direction  );  
+                    bar.setAttribute("class","bar top "+direction  );  
                 }
             }else if(position=="bottom"){
                 window.scrollY > previous ?  direction= "godown":  direction= "goup";
                 previous = window.scrollY;
-                bar.setAttribute("class","topbar bottom "+direction  );  
+                bar.setAttribute("class","bar bottom "+direction  );  
                 
             }
 
@@ -298,13 +300,13 @@ class Button extends  HTMLElement {
       connectedCallback(){
           
         var button = document.createElement("button");
-        if(this.classList.contains('fluent-design')){
+        if(this.classList.contains('fluent-design') || this.classList.contains('material-design-outlined') ){ 
             button.setAttribute("class",this.getAttribute("class")+" button  ");
         }else{
             button.setAttribute("class",this.getAttribute("class")+" button ripple ");
         }
      
-        if(this.classList.contains('material-design') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
+        if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
             error("There isn't any theme defined on element by ID :  "+this.id+" .  ");
         }
         button.setAttribute("onClick","goButton(this)");
