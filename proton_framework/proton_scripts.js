@@ -4,6 +4,7 @@ var config = {   /* DEFAULT VALUES */
     version: '0.5'  
 
 }
+
 window.onload = function(){
         var css = document.createElement("link");
         css.setAttribute("href","proton_framework/main.css");
@@ -25,7 +26,7 @@ let root = document.documentElement;
 const html = document.querySelector("html");
 
 
-
+var bars = 0; 
 var Names = [];
 var PrimaryColors = [];
 var SecondaryColors = [];
@@ -234,22 +235,27 @@ function  activate (id){
       }
       connectedCallback(){
 
-                                                
+        bars++;                            
 
         var bar = document.createElement("div");
         var position = this.getAttribute('position');
         if(position == "top"){
-            html.style = " padding: 65px 0px 0px 0px; ";
+            html.style = " padding: 50px 0px 0px 0px; ";
             bar.className   = position + " topbar godown";
         }else if(position == "bottom"){
             html.style = " padding: 25px 0px 80px 0px; ";
             bar.className   = position + " topbar goup";
         }else if(position == "top-fixed"){
-            html.style = " padding: 65px 0px 0px 0px; ";
+            html.style = " padding: 50px 0px 0px 0px; ";
         }else if(position == "bottom-fixed"){
             html.style = " padding: 25px 0px 80px 0px; ";
         }else{
-            error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
+        error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
+
+        }
+
+        if(bars=2){
+                    html.style = " padding: 50px 0px 80px 0px; ";
         }
         bar.setAttribute("id",this.id);
 

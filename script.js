@@ -14,7 +14,7 @@ function Main(){
         RippleEffect : 'Purple'
     }
     newTheme(colors);
-    setTheme("Blue");
+    setTheme("Purple");
 
 }
 
