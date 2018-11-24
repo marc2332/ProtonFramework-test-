@@ -62,7 +62,6 @@ function $(selector){
 }
 
 function goSwitch(element){
-    //Dot
     var element2 = element.querySelector(".dot_switch");
 if(element.classList.contains("disabled")) {
 }else{
@@ -157,15 +156,15 @@ function setText(id,newText){
     document.getElementById(id).innerText = newText;
 }
 function getState(element){
-    if(document.getElementById(element).childNodes[0].classList.contains("switch")) var object = "switch";
+    if(document.getElementById(element).classList.contains("switch")) var object = "switch";
     if(document.getElementById(element).childNodes[0].classList.contains("button")) var object = "button";
     switch(object){
        case "switch":
             var ele = document.getElementById(element);
-            var child = ele.children[0];
-            if( child.classList.contains("desactivated")) {
+      
+            if( ele.classList.contains("desactivated")) {
                 return false;
-            }else if(child.classList.contains("activated")){
+            }else if(ele.classList.contains("activated")){
                 return true;
             }
         case "button":
