@@ -118,8 +118,7 @@
   }
  }
  
- 
- 
+
  .qp-circular-loader-path {
   stroke: var(--PrimaryColor);
   -webkit-animation-name: fillunfill, rot;

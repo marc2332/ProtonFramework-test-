@@ -223,6 +223,7 @@ function  activate (id){
     }
     this.appendChild(body);
     body.appendChild(dot);
+    this.removeAttribute('id');
       }
   }
 
@@ -283,6 +284,7 @@ function  activate (id){
   
             
         });    
+        this.removeAttribute('id');
       
     }
   }
@@ -311,7 +313,7 @@ class Button extends  HTMLElement {
         button.setAttribute("id",this.id);
 
         this.appendChild(button);    
-        
+        this.removeAttribute('id');
         
        }
   }
@@ -354,7 +356,7 @@ class Spinner extends  HTMLElement {
         button.setAttribute("onClick","goFloatingButton(this)");
         button.setAttribute("id",this.id);
         this.appendChild(button);    
-        
+        this.removeAttribute('id');
        
        }
   }
