@@ -354,8 +354,10 @@ class Spinner extends  HTMLElement {
         button.setAttribute("class"," ripple FloatingButton "+this.getAttribute("class"));
         button.setAttribute("onClick","goFloatingButton(this)");
         button.setAttribute("id",this.id);
+        button.innerHTML = this.getAttribute("text");
         this.appendChild(button);    
         this.removeAttribute('id');
+
        
        }
   }

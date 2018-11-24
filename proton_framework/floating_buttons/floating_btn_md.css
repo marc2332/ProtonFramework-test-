@@ -5,6 +5,7 @@
     border-radius: 50px;
     box-shadow: 0px 3px 2px rgba(0,0,0,0.5);
     z-index: 100; 
+    color: var(--BackgroundColor);
 }
 
 .FloatingButton:hover{
