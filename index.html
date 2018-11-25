@@ -13,10 +13,10 @@
   
     <body>
         <proton-floating-button icon-src="plus_icon.svg" class="pos-bottom pos-right  normal" id="fbtn1" ></proton-floating-button>
-        <proton-bar id="bar1" position="top" title="Top Bar"></proton-bar> 
-        <proton-bar id="bar2" position="bottom-fixed" tabs="Home Testing" title="" class="tab">
+        <proton-bar id="bar1" position="top-fixed" " title="Proton Framework Example"></proton-bar> 
+        <proton-bar id="bar2" text="hidden" position="bottom" tabs="Inbox Ticks Build" Inbox-icon="inbox.svg" Ticks-icon="Tick.svg" Build-icon="build.svg" class="tab">
             </proton-bar> 
-                <div id="Home" class="page home" style="width: auto; height: auto;">
+                <div id="Inbox" class="page home" style="width: auto; height: auto;">
                     <p class="title2 center-elements">Welcome to Proton!</p>
                     <div style="height: auto; width: auto;" class="section">
                         <p>Switch to Red theme</p>
@@ -74,7 +74,7 @@
 
                 </div> 
     </body>  
-    <div id="Testing" class="page" style="width: auto; height: auto;">
+    <div id="Ticks" class="page" style="width: auto; height: auto;">
             <p class="title2 center-elements">Welcome to the second page :v</p>
             <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design">
                 <div style="height: auto; width: auto;" class="section-noborder" >
@@ -91,5 +91,13 @@
                 </div>
             </div>
     </div>
-
+    <div id="Build" class="page" style="width: auto; height: auto;">
+            <p class="title2 center-elements">Welcome to the third page :)</p>
+            <div style="height:90%; width: 90% ;padding:10px;" class="center card proton-design">
+                <div style="height: auto; width: auto;" class="section-noborder" >
+                    <p>This is not loading anything lol xd </p>
+                    <proton-spinner></proton-spinner>
+                </div>
+            </div>
+    </div>
 </html>
