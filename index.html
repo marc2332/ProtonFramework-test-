@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <meta name="Description" content="Proton Project">
+    <meta name="Description" content="Proton Frontend Framework Project">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-
     <link async rel="stylesheet" href="Main.css" type="text/css" >
     <link async rel="stylesheet" href="proton_framework/main.css" type="text/css" >
     <script async rel="preload "src="proton_framework/proton_scripts.js" ></script>
     <script async src="script.js"></script>
-
   
     <body>
-        <proton-floating-button icon-src="plus_icon.svg" class="pos-bottom pos-center normal" id="fbtn1" ></proton-floating-button>
+        <proton-floating-button icon-src="plus_icon.svg" class="pos-bottom pos-right  normal" id="fbtn1" ></proton-floating-button>
         <proton-bar id="bar1" position="top" title="Top Bar"></proton-bar> 
         <proton-bar id="bar2" position="bottom-fixed" tabs="Home Testing" title="" class="tab">
             </proton-bar> 
@@ -77,6 +75,21 @@
                 </div> 
     </body>  
     <div id="Testing" class="page" style="width: auto; height: auto;">
-<p>this is the second page my friend :p</p>
+            <p class="title2 center-elements">Welcome to the second page :v</p>
+            <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design">
+                <div style="height: auto; width: auto;" class="section-noborder" >
+                    <p>this is a fluent design button </p>
+                    <proton-button id="btn1" class=" fluent-design activated" value="Hey bro"></proton-button>
+                </div>
+                <div style="height: auto; width: auto;" class="section">
+                    <p>and this one is a proton button </p>
+                    <proton-button id="btn2" class=" proton-design activated" value="testing :)"></proton-button>
+                </div>
+                <div style="height: auto; width: auto;" class="section">
+                    <p>disabled switch</p>
+                    <proton-switch id="btn2" class=" material-design desactivated disabled" value="testing :)"></proton-switch>
+                </div>
+            </div>
     </div>
+
 </html>
