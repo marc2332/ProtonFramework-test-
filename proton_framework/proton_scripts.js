@@ -5,7 +5,7 @@ var $configApp = {   /* DEFAULT VALUES */
 }
 window.onload = function(){
         var style= document.createElement('script');
-        style.innerHTML = "var buttons = document.getElementsByClassName('ripple'); Array.prototype.forEach.call(buttons, function (b) {b.addEventListener('click', newRipple); }); function newRipple (e) { var circle = document.createElement('div'); this.appendChild(circle); var d = Math.max(this.clientWidth, this.clientHeight); circle.style.width = circle.style.height = d + 'px'; var rect = this.getBoundingClientRect(); circle.style.left=e.clientX-rect.left-d/2+'px'; circle.style.top=e.clientY-rect.top-d/2+'px'; circle.classList.add('ripple');}";
+        style.innerHTML = "var buttons = document.getElementsByClassName('ripple'); Array.prototype.forEach.call(buttons, function (b) {b.addEventListener('click', newRipple); }); function newRipple (e) {  var circle = document.createElement('div'); this.appendChild(circle); var d = Math.max(this.clientWidth, this.clientHeight); circle.style.width = circle.style.height = d + 'px'; var rect = this.getBoundingClientRect(); circle.style.left=e.clientX-rect.left-d/2+'px'; circle.style.top=e.clientY-rect.top-d/2+'px'; circle.classList.add('ripple');}";
         document.body.appendChild(style);                                                                                                               
         Main(); //Run user code
         if($configApp['title']=="undefined"){
@@ -30,27 +30,6 @@ var error_text = document.createElement("p");
 error_bar.classList.add("Error-Bar","disabled");
 document.querySelector("html").appendChild(error_bar);
 error_bar.appendChild(error_text);
-
-function goSwitch(element){
-    var element2 = element.querySelector(".dot_switch");
-    if(element.classList.contains("disabled")===false){
-        if( getState(element.id)) {
-            element.classList.remove("activated");
-            element.classList.add("desactivated");
-            element2.classList.remove("activated");
-            element2.classList.add("desactivated");
-            onChange(element.id);
-            return false;   
-        }else {
-            element.classList.remove("desactivated");
-            element.classList.add("activated");
-            element2.classList.remove("desactivated");
-            element2.classList.add("activated");
-            onChange(element.id);
-            return true;
-         }
-    }
-}
 function setTheme(newTheme){
     switch(newTheme){
         case "Blue":
@@ -91,12 +70,12 @@ function setTheme(newTheme){
                           root.style.setProperty('--BackgroundColor', BackgroundColor[i]);
                           root.style.setProperty('--RippleEffect', RippleEffectColor[i]);
                     }else{
-                        error("There isn't any theme called < "+newTheme+" >. Define it using 'newTheme()' method.");
+                        $error("There isn't any theme called < "+newTheme+" >. Define it using 'newTheme()' method.");
                     }
                 }
     }
 }
-function error(error){ 
+function $error(error){ 
     if($configApp["disable_debugger"]){}else{
         console.error("$ProtonDebugger ~ "+error);
         text_error = text_error + "<br>"+error;
@@ -145,10 +124,9 @@ function toggleState(id){
             }
         break;
         default:
-            error("Unable to toggle state on < "+id+ " > It should defined as a switch.");
+            $error("Unable to toggle state on < "+id+ " > It should defined as a switch.");
     }
 }
-
 function  disable (id){
     var element = document.getElementById(id).childNodes[0];
     element.classList.add("disabled");
@@ -169,23 +147,35 @@ class Switch extends  HTMLElement {
         var dot = document.createElement("div");
         body.setAttribute("class",this.getAttribute("class")+" switch");
         body.setAttribute("id",this.id);
-        body.setAttribute("onClick","goSwitch(this)");
         dot.setAttribute("class","dot_switch");
         if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
-            error("There isn't any design defined on element by ID < "+this.id+" >");
+            $error("There isn't any design defined on element by ID < "+this.id+" >");
         }
         if((this.classList.contains('activated') || this.classList.contains('desactivated'))===false  ){
-            error("You must define the state of the switch with classes 'activated' or 'desactivated' in the element by ID <  "+this.id+" > ");
+            $error("You must define the state of the switch with classes 'activated' or 'desactivated' in the element by ID <  "+this.id+" > ");
         }
         this.appendChild(body);
         body.appendChild(dot);
         this.removeAttribute('id');
+        body.addEventListener('click', function(){
+                var dot = this.childNodes[0];
+                if(this.classList.contains("disabled")===false){
+                    if( getState(this.id)) {
+                        this.classList.replace("activated","desactivated");
+                        dot.classList.replace("activated","desactivated");
+                        onChange(this.id);
+                        return false;   
+                    }else {
+                        this.classList.replace("desactivated","activated");
+                        dot.classList.replace("desactivated","activated");
+                        onChange(this.id);
+                        return true;
+                     }
+                }
+        });
     }
 }
-
 window.customElements.define('proton-switch', Switch);
-
-
 class Bar extends  HTMLElement {
     constructor() {
         super();
@@ -193,67 +183,76 @@ class Bar extends  HTMLElement {
     connectedCallback(){
         bars++;                            
         var bar = document.createElement("div");
-
-        var position = this.getAttribute('position');
-        if(position == "top"){
-            html.style = " padding: 50px 0px 0px 0px; ";
-            bar.className   = position + " bar godown";
-        }else if(position == "bottom"){
-            html.style = " padding: 25px 0px 80px 0px; ";
-            bar.className   = position + " bar goup";
-        }else if(position == "top-fixed"){
-            html.style = " padding: 50px 0px 0px 0px; ";
-            bar.className   = "top" + " bar ";
-        }else if(position == "bottom-fixed"){
-            html.style = " padding: 25px 0px 80px 0px; ";
-            bar.className   = "bottom" + " bar ";
-        }else{
-            error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
-        }
-        if(bars=2){
-            html.style = " padding: 50px 0px 80px 0px; ";
-        }
-        bar.setAttribute("id",this.id);
-        
         var tabs =this.getAttribute("tabs");
+        var using_tabs ="";
         if(tabs!=null){
+             using_tabs = " tab";
             var buttons = [];
               tabs = tabs.split(" ");
               for(i= 0; i<tabs.length; i++){
-                console.log(tabs[i]);
+                var style = "";
                 buttons.push(document.createElement("button"));
                 buttons[i].classList.add("tabButton","button", "ripple");
                 buttons[i].innerHTML= tabs[i];
                 buttons[i].setAttribute("onClick","launchPage(event,'"+tabs[i]+"');");
+                if(this.getAttribute(tabs[i]+'-icon')!=null)style += "background-image: url('"+this.getAttribute(tabs[i]+"-icon")+"'); background-repeat: no-repeat; background-position:center;";
+                if(this.getAttribute("text")=="hidden") style += "font-size: 0px";
                 bar.appendChild(buttons[i]);
                 bar.classList.add("tab");
                 this.classList.remove("tab");
+                buttons[i].style = style;
             }
         }else{
             var title = document.createElement("p");
             title.innerText = this.getAttribute('title');
             bar.appendChild(title);
         }
+      
+        
        this.appendChild(bar);
-        var previous = window.scrollY; /*DETECT SCROLLING*/ 
+        var position = this.getAttribute('position');
+        if(position == "top"){
+            html.style = " padding: 50px 0px 0px 0px; ";
+            bar.className   = position + " bar godown" +using_tabs;
+        }else if(position == "bottom"){
+            html.style = " padding: 25px 0px 80px 0px; ";
+            bar.className   = position + " bar goup" +using_tabs ;
+        }else if(position == "top-fixed"){
+            html.style = " padding: 50px 0px 0px 0px; ";
+            bar.className   = "top" + " bar " +using_tabs;
+        }else if(position == "bottom-fixed"){
+            html.style = " padding: 25px 0px 80px 0px; ";
+            bar.className   = "bottom" + " bar " +using_tabs;
+        }else{
+            $error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
+        }
+        if(bars=2){
+            html.style = " padding: 50px 0px 80px 0px; ";
+        }
+        bar.setAttribute("id",this.id);
+        var previous = window.scrollY; /* Scroll detector */ 
         window.addEventListener('scroll', function(){
             var direction ;
             if(position=="top"){
                 window.scrollY > previous ? direction= "goup":  direction= "godown";
                 previous = window.scrollY;
                 if(previous>35){
-                    bar.setAttribute("class","bar top "+direction  );  
+                    bar.setAttribute("class","bar top "+direction +using_tabs );  
                 }
             }else if(position=="bottom"){
                 window.scrollY > previous ?  direction= "godown":  direction= "goup";
                 previous = window.scrollY;
-                bar.setAttribute("class","bar bottom "+direction  );               
+                bar.setAttribute("class","bar bottom "+direction  +using_tabs);               
             }
         });    
         this.removeAttribute('id');
     }
 }
 function launchPage(evt, page) {
+    var ripplesToDelete = document.getElementsByClassName("ripple"); //Clean already created ripple divs
+    for(i=0; i < ripplesToDelete.length; i++){
+        if(ripplesToDelete[i].classList.length=="1") ripplesToDelete[i].remove();
+    }
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("page");
     for (i = 0; i < tabcontent.length; i++) {
@@ -263,7 +262,12 @@ function launchPage(evt, page) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", " ");
     }
-    console.log(page);
+    if(document.body.contains(document.getElementById(page))===false) 
+    {
+        $error("There isn't any page called < "+page+" >");
+    }else{
+
+    }
     document.getElementById(page).style.display = "block";
     evt.currentTarget.className += " active";
 }
@@ -280,7 +284,7 @@ class Button extends  HTMLElement {
             button.setAttribute("class",this.getAttribute("class")+" button ripple ");
         }
         if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
-            error("There isn't any theme defined on element by ID < "+this.id+" >  ");
+            $error("There isn't any theme defined on element by ID < "+this.id+" >  ");
         }
         button.setAttribute("onClick","goButton(this)");
         button.innerHTML = this.getAttribute("value");

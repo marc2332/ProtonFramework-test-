@@ -19,7 +19,6 @@ body{
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0) !important;
 }
 
-
 button {
     overflow: hidden;
     position: relative;
@@ -352,11 +351,14 @@ p{
     bottom: 0px;  
     width: 0 auto;
 }
-.bar > p{
+.bar> p{
     color:white;
     font-size: 20px;
     margin-top:17px;
     padding-left: 15px;
+}
+.bar.hide-text > p{
+    font-size: 0px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -426,7 +428,6 @@ p{
     border: none;
     outline: none;
     cursor: pointer;
-    transition: 0.3s;
     font-size:18px;
     background: transparent;
 }
@@ -435,8 +436,9 @@ p{
  .tab button:hover {
   cursor: pointer;
 }
-.tab button:active{
-  background-color: var(--LightPrimaryColor);
+.tab button.active{
+
+  border-top: 5px solid white;
 }
 
 
