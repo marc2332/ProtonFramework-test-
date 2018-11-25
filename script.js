@@ -1,7 +1,7 @@
 
 function Main(){
     config = {
-        title : 'Proton Test',
+        title : 'Test',
         version: "0.4",
         disable_debugger : false
     }
@@ -14,10 +14,10 @@ function Main(){
         RippleEffect : 'Purple'
     }
     newTheme(colors);
-    setTheme("Green");
+    setTheme("Red");
 
 }
-
+var _counter = 0;
 
 function onChange(element){
     switch(element){
@@ -31,7 +31,20 @@ function onChange(element){
                     setTheme("Green");
             }
         break;
-        
+        case "test3":
+            if(getState('test3')){
+                    setTheme("Blue");
+            }
+        break;
+        case "test4":
+            if(getState('test4')){
+                    setTheme("Purple");
+            }
+        break;
+        case "fbtn1":
+            _counter++;
+            setText("counter",_counter);
+        break;
 
     }
 }
