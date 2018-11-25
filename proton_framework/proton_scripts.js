@@ -17,7 +17,8 @@ window.onload = function(){
 }
 const root = document.documentElement;
 const html = document.querySelector("html");
-var bars = 0; 
+var bars = 0;
+var i; 
 var Names = [];
 var PrimaryColors = [];
 var SecondaryColors = [];
@@ -193,6 +194,7 @@ class Bar extends  HTMLElement {
     connectedCallback(){
         bars++;                            
         var bar = document.createElement("div");
+
         var position = this.getAttribute('position');
         if(position == "top"){
             html.style = " padding: 50px 0px 0px 0px; ";
@@ -213,10 +215,27 @@ class Bar extends  HTMLElement {
             html.style = " padding: 50px 0px 80px 0px; ";
         }
         bar.setAttribute("id",this.id);
-        var title = document.createElement("p");
-        title.innerText = this.getAttribute('title');
-        this.appendChild(bar);
-        bar.appendChild(title);
+        
+        var tabs =this.getAttribute("tabs");
+        if(tabs!=null){
+            var buttons = [];
+              tabs = tabs.split(" ");
+              for(i= 0; i<tabs.length; i++){
+                console.log(tabs[i]);
+                buttons.push(document.createElement("button"));
+                buttons[i].classList.add("tabButton");
+                buttons[i].innerHTML= tabs[i];
+                buttons[i].setAttribute("onClick","launchPage(event,'"+tabs[i]+"');");
+                bar.appendChild(buttons[i]);
+                bar.classList.add("tab");
+                this.classList.remove("tab");
+            }
+        }else{
+            var title = document.createElement("p");
+            title.innerText = this.getAttribute('title');
+            bar.appendChild(title);
+        }
+       this.appendChild(bar);
         var previous = window.scrollY; /*DETECT SCROLLING*/ 
         window.addEventListener('scroll', function(){
             var direction ;
@@ -229,16 +248,25 @@ class Bar extends  HTMLElement {
             }else if(position=="bottom"){
                 window.scrollY > previous ?  direction= "godown":  direction= "goup";
                 previous = window.scrollY;
-                bar.setAttribute("class","bar bottom "+direction  );  
-                
+                bar.setAttribute("class","bar bottom "+direction  );               
             }
-
-  
-            
         });    
         this.removeAttribute('id');
-      
     }
+}
+function launchPage(evt, page) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("page");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tabButton");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", " ");
+    }
+    console.log(page);
+    document.getElementById(page).style.display = "block";
+    evt.currentTarget.className += " active";
 }
   window.customElements.define('proton-bar', Bar);
 class Button extends  HTMLElement {
@@ -303,3 +331,4 @@ window.customElements.define('proton-floating-button', FloatingButton);
 function goFloatingButton(element){
     if(element.classList.contains("disabled")===false) onChange(element.id);      
 } 
+
