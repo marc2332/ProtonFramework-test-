@@ -223,7 +223,7 @@ class Bar extends  HTMLElement {
               for(i= 0; i<tabs.length; i++){
                 console.log(tabs[i]);
                 buttons.push(document.createElement("button"));
-                buttons[i].classList.add("tabButton");
+                buttons[i].classList.add("tabButton","button", "ripple");
                 buttons[i].innerHTML= tabs[i];
                 buttons[i].setAttribute("onClick","launchPage(event,'"+tabs[i]+"');");
                 bar.appendChild(buttons[i]);
