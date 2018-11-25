@@ -1,24 +1,20 @@
 var $configApp = {   /* DEFAULT VALUES */
     disable_debugger : false,
     title: 'New Project',
-    version: '0.5'  
+    version: '0.0.1'  
 }
 window.onload = function(){
-        var css = document.createElement("link");
-        css.setAttribute("href","proton_framework/main.css");
-        css.setAttribute("rel","stylesheet");
-        html.appendChild(css);
+
         var style= document.createElement('script');
         style.innerHTML = "var buttons = document.getElementsByClassName('ripple'); Array.prototype.forEach.call(buttons, function (b) {b.addEventListener('click', newRipple); }); function newRipple (e) { var circle = document.createElement('div'); this.appendChild(circle); var d = Math.max(this.clientWidth, this.clientHeight); circle.style.width = circle.style.height = d + 'px'; var rect = this.getBoundingClientRect(); circle.style.left=e.clientX-rect.left-d/2+'px'; circle.style.top=e.clientY-rect.top-d/2+'px'; circle.classList.add('ripple');}";
         document.body.appendChild(style);                                                                                                               
-        Main(); //Runs user code
+        Main(); //Run user code
         if($configApp['title']=="undefined"){
-            document.title = 'New Project';  
+            document.title = 'New Project';  //Default title
         }else{
             document.title = $configApp['title'];
         }
 }
-
 const root = document.documentElement;
 const html = document.querySelector("html");
 var bars = 0; 
@@ -98,10 +94,8 @@ function setTheme(newTheme){
                         error("There isn't any theme called < "+newTheme+" >. Define it using 'newTheme()' method.");
                     }
                 }
-       
     }
 }
-
 function error(error){ 
     if($configApp["disable_debugger"]){}else{
         console.error("$ProtonDebugger ~ "+error);
@@ -136,9 +130,7 @@ function getState(element){
         case "button":
             return "activated";
     }
-
 }
-
 function toggleState(id){
     if(document.getElementById(id).childNodes[0].classList.contains("switch")) var object = "switch";
     switch(object){
@@ -149,7 +141,7 @@ function toggleState(id){
                 element.classList.add("desactivated");
             }else{
                 element.classList.remove("desactivated");
-                    element.classList.add("activated");
+                element.classList.add("activated");
             }
         break;
         default:
@@ -255,13 +247,13 @@ class Button extends  HTMLElement {
     }
     connectedCallback(){  
         var button = document.createElement("button");
-        if(this.classList.contains('fluent-design') || this.classList.contains('material-design-outlined') ){ 
+        if(this.classList.contains('fluent-design') ){ 
             button.setAttribute("class",this.getAttribute("class")+" button  ");
         }else{
             button.setAttribute("class",this.getAttribute("class")+" button ripple ");
         }
         if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
-            error("There isn't any theme defined on element by ID :  "+this.id+" .  ");
+            error("There isn't any theme defined on element by ID < "+this.id+" >  ");
         }
         button.setAttribute("onClick","goButton(this)");
         button.innerHTML = this.getAttribute("value");

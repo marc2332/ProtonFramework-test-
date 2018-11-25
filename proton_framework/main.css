@@ -34,19 +34,951 @@ button .ripple {
      }
      @keyframes ripple { to {  transform: scale(4); opacity: 0; } }
 
+/*    Text   */
+/*______________*/
 
+.title1{
+    font-size: 30px;
+    line-height: 20px;
+    margin: 20px  0px 12px 0px;
+}
+.title2{
+    font-size: 40px;
+    line-height: 40px;
+    margin: 20px  0px 12px 0px;
+}
+.title3{
+    font-size: 50px;
+    line-height: 50px;
+    margin: 20px  0px 12px 0px;
+}
+
+p{
+    font-size:17px;
+}
+
+@media only screen and (max-width: 800px) {
+    .title1{
+        font-size: 19px;
+        line-height: 20px;
+        margin: 15px  0px 4px 0px;
+    }
+    .title2{
+        font-size: 25px;
+        line-height: 40px;
+        margin: 15px  0px 4px 0px;
+
+    }
+    .title3{
+        font-size: 35px;
+        line-height: 50px;
+        margin: 15px  0px 4px 0px;
+    }
+    
+    p{
+        font-size:14px;
+    }
+}
+
+/*      Positions*/
+/*_______________________*/
+.columns > div{
+    margin: 0px 10px 0px 10px;
+    -webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */    
+    flex: 1;
+}
+
+.center{
+    margin: 0 auto;
+    padding: 0;
+
+}
+.center-elements{
+    text-align: center;
+ align-items: center;
+ vertical-align: middle;
+ 
+}
+
+.columns{
+    width: auto;
+    height: auto;   
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.section{
+    border-top: 1px  solid lightgray;
+    width: auto;
+    height: auto;
+    padding:2px 0px 2px 10px;
+    margin:0;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    vertical-align: middle;
+}   
+
+/*    Loader   */
+/*______________*/
+ 
+ .spinner {
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+ }
+ 
+ 
+ .qp-circular-loader {
+  width: 64px;
+  /* 2*RADIUS + STROKEWIDTH */
+  
+  height: 64px;
+  /* 2*RADIUS + STROKEWIDTH */
+  
+  stroke-width: 3px;
+ }
+ 
+ .qp-circular-loader-path {
+     fill: none;
+     stroke-linecap: "round";
      
+  stroke-dasharray: 58.9;
+  /* 2*RADIUS*PI * ARCSIZE/360 */
+  
+  stroke-dashoffset: 58.9;
+  /* 2*RADIUS*PI * ARCSIZE/360 */
+  /* hides things initially */
+ }
+ /* SVG elements seem to have a different default origin */
+ 
+ .qp-circular-loader,
+ .qp-circular-loader * {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+ }
+ /* Rotating the whole thing */
+ 
+ @-webkit-keyframes rotate {
+  from {
+   -webkit-transform: rotate(0deg);
+  }
+  to {
+   -webkit-transform: rotate(360deg);
+  }
+ }
+ 
+ @keyframes rotate {
+  from {
+   transform: rotate(0deg);
+  }
+  to {
+   transform: rotate(360deg);
+  }
+ }
+ 
+ .qp-circular-loader {
+  -webkit-animation-name: rotate;
+  animation-name: rotate;
+  -webkit-animation-duration: 1568.63ms;
+  animation-duration: 1568.63ms;
+  /* 360 * ARCTIME / (ARCSTARTROT + (360-ARCSIZE)) */
+  
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+ }
+ /* Filling and unfilling the arc */
+ 
+ @-webkit-keyframes fillunfill {
+  from {
+   stroke-dashoffset: 58.8
+   /* 2*RADIUS*PI * ARCSIZE/360 - 0.1 */
+   /* 0.1 a bit of a magic constant here */
+  }
+  50% {
+   stroke-dashoffset: 0;
+  }
+  to {
+   stroke-dashoffset: -58.4
+   /* -(2*RADIUS*PI * ARCSIZE/360 - 0.5) */
+   /* 0.5 a bit of a magic constant here */
+  }
+ }
+ 
+ @keyframes fillunfill {
+  from {
+   stroke-dashoffset: 58.8
+   /* 2*RADIUS*PI * ARCSIZE/360 - 0.1 */
+   /* 0.1 a bit of a magic constant here */
+  }
+  50% {
+   stroke-dashoffset: 0;
+  }
+  to {
+   stroke-dashoffset: -58.4
+   /* -(2*RADIUS*PI * ARCSIZE/360 - 0.5) */
+   /* 0.5 a bit of a magic constant here */
+  }
+ }
+ 
+ @-webkit-keyframes rot {
+  from {
+   -webkit-transform: rotate(0deg);
+  }
+  to {
+   -webkit-transform: rotate(-360deg);
+  }
+ }
+ 
+ @keyframes rot {
+  from {
+   transform: rotate(0deg);
+  }
+  to {
+   transform: rotate(-360deg);
+  }
+ }
+ 
+
+ .qp-circular-loader-path {
+  stroke: var(--PrimaryColor);
+  -webkit-animation-name: fillunfill, rot;
+  animation-name: fillunfill, rot;
+  -webkit-animation-duration: 1333ms, 5332ms, 5332ms;
+  animation-duration: 1333ms, 5332ms, 5332ms;
+  /* ARCTIME, 4*ARCTIME, 4*ARCTIME */
+  
+  -webkit-animation-iteration-count: infinite, infinite, infinite;
+  animation-iteration-count: infinite, infinite, infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), steps(4), linear;
+  animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), steps(4), linear;
+  -webkit-animation-play-state: running, running, running;
+  animation-play-state: running, running, running;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+ }
+
+/*    Cards   */
+/*______________*/
+
+
+.card.material-design{
+   background: var(--BasicColor);
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    margin-bottom: 10px;
+    overflow: auto;
+    
+}
+.card.fluent-design{
+    background: var(--BasicColor);
+    box-shadow: 0px 1px 12px rgba(0,0,0,0.2);
+    border-radius: 0px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+.card.proton-design{
+    background: var(--BasicColor);
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    
+    margin-bottom: 10px;
+    overflow: auto;
+}
+.card.material-design-outlined{
+    background: var(--BasicColor);
+    border-radius: 7px;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+.card.transparent{
+    background: transparent;
+    border-radius: 0px;
+    padding: 1px 0px;
+    overflow: auto; 
+}
+  
+/*    Bars   */
+/*______________*/
+
+.Error-Bar{
+    visibility: visible;
+    height: auto;
+    width: auto;
+    border: 3px solid #b71c1c;
+    background: #ff5252 ;
+    box-shadow: 2px 1px 10px rgba(0,0,0,0.5);
+    position: fixed;
+    border-radius: 10px;
+    margin: 10px;
+    top:0;
+    z-index: 100;   
+    padding: 3px;
+}
+.Error-Bar > p{
+    padding:10px;
+    color: white;
+    font-size: 20px;
+}
+.Error-Bar.disabled{
+    visibility: hidden;
+}
+
+/*Top Bar*/
+.bar{
+    height:57px;
+    width: 100%;
+    background: var(--PrimaryColor);
+    margin:0px;
+    box-shadow: 2px 1px 10px rgba(0,0,0,0.5);
+    padding-left: 15px;
+    position: fixed;
+}
+.bar.top{
+    position: fixed;
+    z-index: 50; 
+    top: 0;  
+    width: 0 auto;
+}
+.bar.bottom{
+    position: fixed;
+    z-index: 50; 
+    bottom: 0px;  
+    width: 0 auto;
+}
+.bar > p{
+    color:white;
+    font-size: 20px;
+    margin-top:17px;
+}
+
+@media only screen and (max-width: 800px) {
+    .bar > p{
+        color:white;
+        font-size: 21px;
+        margin-top:17px;
+    }
+}
+.bar.top.godown{
+    animation: godown-top linear 0.20s;
+    top:0px;
+}
+.bar.bottom.godown{
+    animation: goup-bottom linear 0.20s;
+    bottom:-100px;
+}
+.bar.top.goup{
+    animation: goup-top linear 0.20s;
+    top:-100px;
+}
+.bar.bottom.goup{
+    animation: godown-bottom linear 0.20s;
+    bottom:0px;
+}
+
+@keyframes goup-top{
+    from{top:0px;}
+    to{top:-100px;}
+}
+@keyframes godown-top{
+    from{top:-100px;}
+    to{top:0;}
+}
+@keyframes goup-bottom{
+    from{bottom:0px;}
+    to{bottom:-100px;}
+}
+@keyframes godown-bottom{
+    from{bottom:-100px;}
+    to{bottom:0px;}
+}
+
+
+/*    Fluent Design Switches   */
+/*______________*/
+
+.switch.fluent-design {
+    width: 32px;
+     height: 14px;
+     border-radius: 20px;
+     margin:12px;
+     position: relative;
+     
+}
+.switch.fluent-design > div{
+
+    height: 8px;
+    width: 8px;
+    border-radius: 50px;
+    position: relative;
+    top: 1px;
+}
+
+.activated.fluent-design.switch {
+    background: var(--PrimaryColor);
+}
+.activated.fluent-design.switch > .dot_switch{
+    top: 3px;
+    animation: activating-switch-dot-fluent-design linear 0.15s;
+    background: white;
+    left:20px;
+    
+}
+.desactivated.fluent-design.switch {
+    background: white;
+    box-sizing: border-box;
+    border: 1.8px solid #4d4d4d;
+}
+
+.desactivated.fluent-design.switch > .dot_switch{
+    animation: desactivating-switch-dot-fluent-design  linear 0.15s;
+    background: #4d4d4d;
+   left:2px;
+   position: relative;
+    top: 1px; 
+}
+.disabled.fluent-design.switch{
+    border: 1.8px solid gray;
+    box-sizing: border-box;
+}
+.disabled.switch.fluent-design.desactivated > div {
+    animation: desactivating-switch-dot-fluent-design  linear 0.15s;
+    background-color: gray;
+    left:2px;
+    position: relative;
+    top: 1px; 
+}
+@keyframes activating-switch-dot-fluent-design {
+    from{
+        left:3px;
+    }
+    to{
+       left:20px;
+       
+    }
+}
+@keyframes desactivating-switch-dot-fluent-design {
+    from{
+        left:20px;
+    }
+    to{
+       left:3px;
+    }
+}
+
+/*    Material Design Switches   */
+/*______________*/
+.switch:hover{
+    cursor: pointer;
+}
+.switch.material-design {
+    width: 27px;
+     height: 14px;
+     border-radius: 20px;
+     margin:12px;
+     position: relative;
+}
+.switch.material-design > div{
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.3);
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    position: relative;
+    top: -3px;
+}
+
+.activated.material-design.switch {
+    background: var(--LightPrimaryColor);
+}
+.activated.material-design.switch > .dot_switch{
+    animation: activating-switch-dot linear 0.15s;
+    background: var(--PrimaryColor);
+    left:12px;
+}
+.desactivated.material-design.switch {
+    background: darkgray;
+}
+
+.desactivated.material-design.switch > .dot_switch{
+    animation: desactivating-switch-dot linear 0.15s;
+    background: gray;
+   left:-7px;
+}
+
+.disabled.material-design.switch{
+    background: lightgray;
+    box-sizing: border-box;
+}
+.disabled.switch.material-design.desactivated > div {
+    animation: desactivating-switch-dot  linear 0.15s;
+    background-color: gray;
+    left:-7px;
+    position: relative;
+}
+
+@keyframes activating-switch-dot{
+    from{
+        background: gray;
+        left:-5px;
+    }
+    to{
+        background: var(--PrimaryColor);
+       left:12px;
+    }
+}
+@keyframes desactivating-switch-dot{
+    from{
+        background: var(--PrimaryColor);
+        left:10px;
+    }
+    to{
+        background: gray;
+       left:-7px;
+    }
+}
+/*    Material Design Outlined Switches   */
+/*______________*/
+
+.switch.material-design-outlined{
+    box-sizing: border-box;
+    width: 27px;
+     height: 14px;
+     border-radius: 20px;
+     margin:12px;
+     position: relative;
+}
+.switch.material-design-outlined > div{
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.3);
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    position: relative;
+    top: -6px;
+}
+.activated.material-design-outlined.switch{
+    background-color: white;
+    border: 2.5px solid var(--LightPrimaryColor);
+}
+.activated.material-design-outlined.switch > .dot_switch{
+    animation: activating-switch-dot-outlined linear 0.15s;
+    background: var(--PrimaryColor);
+    left:9.5px;
+}
+.desactivated.material-design-outlined.switch {
+    background-color: white;
+    border: 2.5px solid darkgrey;
+}
+
+.desactivated.material-design-outlined.switch > .dot_switch{
+    animation: desactivating-switch-dot-outlined linear 0.15s;
+    background: gray;
+   left:-9.5px;
+}
+
+.disabled.material-design-outlined.switch{
+    background-color: white;
+    border: 2.5px solid lightgray;
+    box-sizing: border-box;
+}
+.disabled.switch.material-design-outlined.desactivated > div {
+    animation: desactivating-switch-dot-outlined  linear 0.15s;
+    background-color: gray;
+    left:-9.5px;
+    position: relative;
+}
+@keyframes activating-switch-dot-outlined{
+    from{
+        background: gray;
+        left:-9.5px;
+    }
+    to{
+        background: var(--PrimaryColor);
+       left:9px;
+    }
+}
+
+@keyframes desactivating-switch-dot-outlined{
+    from{
+        background: var(--PrimaryColor);
+        left:7px;
+    }
+    to{
+        background: gray;
+       left:-9.5px;
+    }
+}
+/*    Proton Design  Switches   */
+/*______________*/
+
+.switch.proton-design {
+    width: 32px;
+     height: 20px;
+     border-radius: 20px;
+     margin:12px;
+     position: relative;
+     
+}
+.switch.proton-design > div{
+
+    height: 12px;
+    width: 12px;
+    border-radius: 50px;
+    position: relative;
+    top: 5px;
+}
+
+.activated.proton-design.switch {
+    border: 1.8px solid var(--PrimaryColor);
+    background: var(--BackgroundColor);
+}
+.activated.proton-design.switch > .dot_switch{
+    top: 4px;
+    animation: activating-switch-dot-proton-design linear 0.15s;
+    background: var(--PrimaryColor);
+    left:17px;
+    
+}
+.desactivated.proton-design.switch {
+    background: white;
+    border: 1.8px solid #4d4d4d;
+}
+
+.desactivated.proton-design.switch > .dot_switch{
+    animation: desactivating-switch-dot-proton-design  linear 0.15s;
+    background: #4d4d4d;
+    left:3px;
+    position: relative;
+    top: 4px; 
+}
+.disabled.proton-design.switch{
+    border: 1.8px solid gray;
+    box-sizing: border-box;
+}
+.disabled.switch.proton-design.desactivated > div {
+    animation: desactivating-switch-dot-proton-design  linear 0.15s;
+    background-color: gray;
+    left:3px;
+    position: relative;
+    top: 1px; 
+}
+@keyframes activating-switch-dot-proton-design {
+    from{
+        left:3px;
+    }
+    to{
+       left:17px;
+       
+    }
+}
+@keyframes desactivating-switch-dot-proton-design {
+    from{
+        left:17px;
+    }
+    to{
+       left:3px;
+    }
+}
+
+/*  Floating Button   */
+/*______________*/
+
+.FloatingButton{
+    background-color: var(--PrimaryColor);
+    position: fixed;    
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+    z-index: 100; 
+    color: var(--BackgroundColor);
+}
+.FloatingButton:active{
+    background: var(--LightPrimaryColor);
+    cursor: pointer;
+    animation: in linear 0.2s;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+}
+.FloatingButton:hover{
+    background: var(--LightPrimaryColor);
+    cursor: pointer;
+    animation: in linear 0.2s;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+}
+
+.FloatingButton.pos-top{
+    top:5%;
+}
+.FloatingButton.pos-right{
+    right:5%;
+}
+.FloatingButton.pos-left{
+    left:5%;
+}
+.FloatingButton.pos-bottom{
+    bottom: 3%;
+}
+.FloatingButton.pos-center{
+    left:50%;
+    right:50%;
+    transform: translate(-50%, 0%); 
+}
+
+.FloatingButton.small{
+    height: 45px;
+    width:45px;
+}
+.FloatingButton.normal{
+    height: 57px;
+    width:57px;
+}
+.FloatingButton.big{
+    height: 65px;
+    width:65px;
+}
+/*  Fluent Design Button   */
+/*______________*/
+.button{
+    margin: 0 auto;
+    padding: 5px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+}
+.button.fluent-design:not(.disabled){
+    animation: button-fluent-design-hover-out linear 0.1s;
+    height: auto;
+    width: auto;
+    background: var(--PrimaryColor);
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0);
+    padding: 0px 7px;
+    margin:0px 5px;
+
+}
+
+.button.fluent-design:hover:not(.disabled){
+    animation: button-fluent-design-hover-in linear 0.1s;
+    background: var(--LightPrimaryColor);
+    cursor: pointer;
+     box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+}
+.button.fluent-design.disabled{
+    height: auto;
+    width: auto;
+    background: #4d4d4d;
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0);
+    margin:0px 5px;
+    padding: 0px 7px;
+}
+
+@keyframes button-fluent-design-hover-in{
+    from {
+        background: var(--PrimaryColor);
+        box-shadow: 0px 1px 4px rgba(0,0,0,0);
+        
+    }
+    to{
+        background: var(--LightPrimaryColor);
+        box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+    }
+}
+@keyframes button-fluent-design-hover-out{
+    from {
+        background: var(--LightPrimaryColor);
+        box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+    }
+    to{
+        background: var(--PrimaryColor);
+        box-shadow: 0px 1px 4px rgba(0,0,0,0);
+    }
+}
+/*  Material Design Button   */
+/*______________*/
+.button{
+    margin: 0 auto;
+    padding: 5px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+}
+.button.material-design:not(.disabled){
+    animation: button-material-design-hover-out linear 0.1s;
+    height: auto;
+    width: auto ;
+    background: var(--PrimaryColor);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    margin:0px 5px;
+
+}
+.button.material-design:hover:not(.disabled){
+    
+    background: var(--LightPrimaryColor);
+    background: var(--LightPrimaryColor);
+    animation: button-material-design-hover-in linear 0.1s;
+    box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
+    cursor: pointer;
+     
+}
+
+.button.material-design.disabled{
+    height: auto;
+    width: auto;
+    background: #4d4d4d;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    margin:0px 5px;
+}
+
+
+@keyframes button-material-design-hover-in{
+    from {
+        
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+        
+    }
+    to{
+        box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
+    }
+}
+@keyframes button-material-design-hover-out{
+    from {
+        background: var(--LightPrimaryColor);
+        box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
+    }
+    to{
+        background: var(--PrimaryColor);
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    }
+}
+/*  Material Design Outlined Button   */
+/*______________*/
+.button{
+    margin: 0 auto;
+    padding: 5px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+}
+.button.material-design-outlined:not(.disabled){
+    animation: button-material-design-outlined-hover-out linear 0.1s;
+    height: auto;
+    width: auto;
+    background: transparent;
+    border-radius: 1px;
+    border: 4px solid var(--PrimaryColor);
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    margin:0px 5px;
+    color: var(--PrimaryColor);
+    
+
+}
+
+.button.material-design-outlined:hover:not(.disabled){
+    animation: button-material-design-outlined-hover-in linear 0.1s;
+     border: 4px solid var(--LightPrimaryColor);
+     background: var(--LightPrimaryColor);
+    cursor: pointer;
+    color: white;
+     box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
+}
+.button.material-design-outlined.disabled{
+    height: auto;
+    width: auto;
+    background: #4d4d4d;
+    border-radius: 5px;
+    border: 4px solid#4d4d4d;
+    border: none;
+   box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+   margin:0px 5px;
 
 
 
 
+}
+
+@keyframes button-material-design-outlined-hover-in{
+    from {
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+        
+    }
+    to{
+        box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
+    }
+}
+@keyframes button-material-design-outlined-hover-out{
+    from {
+         border: 4px solid var(--LightPrimaryColor);
+        box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
+    }
+    to{
+        border: 4px solid var(--PrimaryColor);
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    }
+}
+/*  Proton Design Button   */
+/*______________*/
+.button.proton-design:not(.disabled){
+    animation: button-proton-design-hover-out linear 0.1s;
+    height: auto;
+    width: auto ;
+    border: 2px solid var(--PrimaryColor);
+    background: transparent;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    margin:0px 5px;
+    padding: 1px 15px;
+    color: var(--PrimaryColor);
+}
+.button{
+    margin: 0 auto;
+    padding: 5px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+}
+.button.proton-design:hover:not(.disabled){
+    animation: button-proton-design-hover-in linear 0.1s;
+    background: var(--PrimaryColor);
+    cursor: pointer;
+     box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
+     color:white;
+}
+.button.proton-design.disabled{
+    height: auto;
+    width: auto;
+    background: #4d4d4d;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    margin:0px 5px;
+}
 
 
-
-
-
-
-
-
-
-
+@keyframes button-proton-design-hover-in{
+    from {
+        background: transparent;
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+        
+    }
+    to{
+        background: var(--PrimaryColor);
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.0.4);
+    }
+}
+@keyframes button-proton-design-hover-out{
+    from {
+        background: var(--PrimaryColor);
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.0.4);
+    }
+    to{
+        background: transparent;
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+    }
+}
