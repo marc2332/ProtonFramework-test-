@@ -425,7 +425,9 @@ p{
   background-size: 20px;
   opacity: 0.8;
 }
-
+.tab button:hover{
+  background: var(--LightPrimaryColor);
+}
 .tab button.active{
   opacity: 1;
   animation: icon_size_active linear 0.10s;
@@ -529,7 +531,7 @@ p{
     width: 27px;
      height: 14px;
      border-radius: 20px;
-     margin:12px;
+     margin:0 3px;
      position: relative;
 }
 .switch.material-design-outlined > div{
@@ -742,10 +744,11 @@ p{
     height: auto;
     width: auto ;
     background: var(--PrimaryColor);
-    border-radius: 5px;
+    border-radius: 2px;
     border: none;
     box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-    margin:0px 5px;
+    margin:0px 3px;
+    padding: 1px 11px;
 
 }
 .button.material-design:hover:not(.disabled){
@@ -807,6 +810,7 @@ p{
     border: 4px solid var(--PrimaryColor);
     box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
     margin:0px 5px;
+    padding: 2px 8px;
     color: var(--PrimaryColor);
     
 
@@ -857,6 +861,7 @@ p{
 /*  Proton Design Button   */
 /*______________*/
 .button.proton-design:not(.disabled){
+  transition: 0.2s;
     animation: button-proton-design-hover-out linear 0.1s;
     height: auto;
     width: auto ;
@@ -878,6 +883,15 @@ p{
 .button.proton-design:hover:not(.disabled){
     animation: button-proton-design-hover-in linear 0.1s;
     background: var(--PrimaryColor);
+    cursor: pointer;
+     box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
+     color:white;
+}
+.button.proton-design:active:not(.disabled){
+  transition: 0.2s;
+    animation: button-proton-design-hover-in linear 0.1s;
+    background: var(--LightPrimaryColor);
+    border: 2px solid var(--LightPrimaryColor);
     cursor: pointer;
      box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
      color:white;

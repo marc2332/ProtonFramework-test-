@@ -278,12 +278,12 @@ class Button extends  HTMLElement {
     }
     connectedCallback(){  
         var button = document.createElement("button");
-        if(this.classList.contains('fluent-design') ){ 
+        if(this.classList.contains('proton-design') ){ 
             button.setAttribute("class",this.getAttribute("class")+" button  ");
         }else{
             button.setAttribute("class",this.getAttribute("class")+" button ripple ");
         }
-        if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
+        if((this.classList.contains('material-design') || this.classList.contains('material-design-outlined') ||  this.classList.contains('proton-design') )===false){
             $error("There isn't any theme defined on element by ID < "+this.id+" >  ");
         }
         button.setAttribute("onClick","goButton(this)");
