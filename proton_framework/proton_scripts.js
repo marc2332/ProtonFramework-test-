@@ -55,8 +55,8 @@ function setTheme(newTheme){
         break;
         case "Purple":
         root.style.setProperty('--PrimaryColor', "#6200ea");
-        root.style.setProperty('--SecondaryColor', "#6a1b9a");
-        root.style.setProperty('--LightPrimaryColor', "#ce93d8");
+        root.style.setProperty('--SecondaryColor', "#673ab7");
+        root.style.setProperty('--LightPrimaryColor', "#b388ff");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;

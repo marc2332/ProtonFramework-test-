@@ -14,7 +14,7 @@ function Main(){
         RippleEffect : 'Purple'
     }
     newTheme(colors);
-    setTheme("Red");
+    setTheme("Blue");
 
 }
 var _counter = 0;

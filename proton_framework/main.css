@@ -425,27 +425,21 @@ p{
   opacity: 0.8;
 }
 
-.tab button:hover {
-  cursor: pointer;
-}
-.tab button:target {
-  background: var(--LightPrimaryColor);
-}
 .tab button.active{
   opacity: 1;
   animation: icon_size_active linear 0.10s;
-  background-size: 30px;
+  background-size: 27px;
 }
 
 @keyframes icon_size_active{
   from{
     background-size: 20px;
   }
-  to{background-size: 30px;}
+  to{background-size: 27px;}
 }
 @keyframes icon_size{
   from{
-    background-size: 30px;
+    background-size: 27px;
   }
   to{background-size: 20px;}
 }
@@ -695,16 +689,16 @@ p{
 }
 
 .FloatingButton.pos-top{
-    top:5%;
+    top:30px;
 }
 .FloatingButton.pos-right{
-    right:5%;
+    right:30px;
 }
 .FloatingButton.pos-left{
-    left:5%;
+    left:30px;
 }
 .FloatingButton.pos-bottom{
-    bottom: 3%;
+    bottom: 30px;
 }
 .FloatingButton.pos-center{
     left:50%;
