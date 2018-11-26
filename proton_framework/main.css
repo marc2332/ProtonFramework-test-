@@ -12,13 +12,14 @@ body{
      background: var(--BackgroundColor);
 }   
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
 *{
    font-family: 'Montserrat', sans-serif !important;
     outline: 0 !important;
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0) !important;
 }
-
+code{
+  color:var(--PrimaryColor);
+}
 button {
     overflow: hidden;
     position: relative;
@@ -687,7 +688,15 @@ p{
     animation: in linear 0.2s;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
 }
-
+.FloatingButton.disabled{
+    background-color: gray;
+    position: fixed;    
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+    z-index: 100; 
+    color: var(--BackgroundColor);
+}
 .FloatingButton.pos-top{
     top:30px;
 }

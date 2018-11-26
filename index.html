@@ -12,7 +12,7 @@
     <script async src="script.js"></script>
   
     <body>
-        <proton-floating-button icon-src="plus_icon.svg" class="pos-bottom pos-right  normal" id="fbtn1" ></proton-floating-button>
+        <proton-floating-button icon-src="plus_icon.svg" class=" pos-bottom pos-right  normal" id="fbtn1" ></proton-floating-button>
         <proton-bar id="bar1" position="top-fixed" " title="Proton Framework Example"></proton-bar> 
         <proton-bar id="bar2" text="hidden" position="bottom" tabs="Inbox Ticks Build" Inbox-icon="inbox.svg" Ticks-icon="tick.svg" Build-icon="build.svg" class="tab">
             </proton-bar> 
@@ -50,14 +50,23 @@
                         </proton-button>
                     </div>
                     <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
-                        <p class="title2">Lorem ipsum</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <proton-button  class="material-design activated" value="Testing">
+                        <p class="title3">newTheme()</p>
+                        <p>You can define a new theme using this code on your script.js</p>
+                        <pre> <code >
+                        colors = {
+                            Name : 'fullWhite',
+                            Primary : '#FFFFFF',
+                            Light: '#FFFFFF',
+                            Secondary: '#FFFFFF',
+                            Background: '#FFFFFF',
+                            RippleEffect : '#FFFFFF'
+                        }
+                            newTheme(colors);
+                        </code></pre>
+                        <p class="title2">setTheme()</p>
+                        <p>Updating the whole page theme using setTheme() method:
+                        <pre><code>setTheme("fullWhite");</code></pre>
+                        <proton-button  class="proton-design activated" value="Try it">
                         </proton-button>
                     </div>
                     <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >

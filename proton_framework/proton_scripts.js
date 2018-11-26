@@ -61,14 +61,13 @@ function setTheme(newTheme){
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         default:
-            var i = 0;
                 for( i = 0; i < PrimaryColors.length; i++){ 
                     if(Names[i] ==newTheme){
                         root.style.setProperty('--PrimaryColor', PrimaryColors[i]);
-                          root.style.setProperty('--SecondaryColor', SecondaryColors[i]);
-                          root.style.setProperty('--LightPrimaryColor', LightPrimaryColor[i]);
-                          root.style.setProperty('--BackgroundColor', BackgroundColor[i]);
-                          root.style.setProperty('--RippleEffect', RippleEffectColor[i]);
+                        root.style.setProperty('--SecondaryColor', SecondaryColors[i]);
+                        root.style.setProperty('--LightPrimaryColor', LightPrimaryColor[i]);
+                        root.style.setProperty('--BackgroundColor', BackgroundColor[i]);
+                        root.style.setProperty('--RippleEffect', RippleEffectColor[i]);
                     }else{
                         $error("There isn't any theme called < "+newTheme+" >. Define it using 'newTheme()' method.");
                     }
@@ -106,8 +105,10 @@ function getState(element){
             }else if(ele.classList.contains("activated")){
                 return true;
             }
+            break;
         case "button":
             return "activated";
+            break;
     }
 }
 function toggleState(id){
@@ -131,7 +132,6 @@ function  disable (id){
     var element = document.getElementById(id).childNodes[0];
     element.classList.add("disabled");
     element.classList.add("desactivated");
-    
 }
 function  activate (id){
     var element = document.getElementById(id).childNodes[0];
@@ -186,10 +186,10 @@ class Bar extends  HTMLElement {
         var tabs =this.getAttribute("tabs");
         var using_tabs ="";
         if(tabs!=null){
-             using_tabs = " tab";
+            using_tabs = " tab";
             var buttons = [];
-              tabs = tabs.split(" ");
-              for(i= 0; i<tabs.length; i++){
+            tabs = tabs.split(" ");
+            for(i= 0; i<tabs.length; i++){
                 var style = "";
                 buttons.push(document.createElement("button"));
                 buttons[i].classList.add("tabButton","button", "ripple");
@@ -201,8 +201,6 @@ class Bar extends  HTMLElement {
                 this.classList.remove("tab");
                 buttons[i].style = style;
                 if(document.getElementsByClassName("start-page")[0].id ==tabs[i]) buttons[i].classList.add("active"); 
-     
-            
                 bar.appendChild(buttons[i]);
             }
         }else{
@@ -210,10 +208,9 @@ class Bar extends  HTMLElement {
             title.innerText = this.getAttribute('title');
             bar.appendChild(title);
         }
-      
-        
-       this.appendChild(bar);
-        var position = this.getAttribute('position');
+        if(this.getAttribute('position')=== null || this.getAttribute('position')=="")
+        {var position = "null";}
+        else{var position = this.getAttribute('position');}
         if(position == "top"){
             html.style = " padding: 50px 0px 0px 0px; ";
             bar.className   = position + " bar godown" +using_tabs;
@@ -227,12 +224,13 @@ class Bar extends  HTMLElement {
             html.style = " padding: 25px 0px 80px 0px; ";
             bar.className   = "bottom" + " bar " +using_tabs;
         }else{
-            $error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
+            $error("There isn't any position for the Bar Component with id < "+this.id+" > defined as '"+position+"'");
         }
         if(bars=2){
             html.style = " padding: 50px 0px 75px 0px; ";
         }
         bar.setAttribute("id",this.id);
+        this.appendChild(bar);
         var previous = window.scrollY; /* Scroll detector */ 
         window.addEventListener('scroll', function(){
             var direction ;
@@ -318,7 +316,11 @@ class FloatingButton extends  HTMLElement {
     } 
     connectedCallback(){
         var button = document.createElement("button");
-        button.setAttribute("class"," ripple FloatingButton "+this.getAttribute("class"));
+        if(this.classList.contains("disabled")===false) {
+            button.setAttribute("class"," ripple FloatingButton "+this.getAttribute("class"));
+        }else{
+            button.setAttribute("class"," FloatingButton "+this.getAttribute("class"));
+        }
         button.setAttribute("onClick","goFloatingButton(this)");
         button.setAttribute("id",this.id);
         if(this.getAttribute("text")== null){
