@@ -33,15 +33,15 @@ error_bar.appendChild(error_text);
 function setTheme(newTheme){
     switch(newTheme){
         case "Blue":
-        root.style.setProperty('--PrimaryColor', "#2962ff");
-        root.style.setProperty('--SecondaryColor', "darkblue");
+        root.style.setProperty('--PrimaryColor', "#2979ff");
+        root.style.setProperty('--SecondaryColor', "#1565c0");
         root.style.setProperty('--LightPrimaryColor', "#75a7ff");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         case "Red":
-        root.style.setProperty('--PrimaryColor', "red");
-        root.style.setProperty('--SecondaryColor', "darkred");
+        root.style.setProperty('--PrimaryColor', "#d50000");
+        root.style.setProperty('--SecondaryColor', "#b71c1c");
         root.style.setProperty('--LightPrimaryColor', "#ff8a80");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
@@ -54,8 +54,8 @@ function setTheme(newTheme){
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
         case "Purple":
-        root.style.setProperty('--PrimaryColor', "purple");
-        root.style.setProperty('--SecondaryColor', "purple");
+        root.style.setProperty('--PrimaryColor', "#6200ea");
+        root.style.setProperty('--SecondaryColor', "#6a1b9a");
         root.style.setProperty('--LightPrimaryColor', "#ce93d8");
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
