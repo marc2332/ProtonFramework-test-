@@ -412,7 +412,8 @@ p{
 }
 
 .tab button{
-  animation: icon_size linear 0.10s;
+  transition: 0.3s;
+  animation: icon_size linear 0.15s;
   margin: 0;
   color: white;
   z-index: 55; 
@@ -426,33 +427,47 @@ p{
   opacity: 0.8;
 }
 .tab button:hover{
+  transition: 0.10s;
   background: var(--LightPrimaryColor);
+   opacity: 1;
+  background-size: 20px
+  
 }
 .tab button.active{
   opacity: 1;
-  animation: icon_size_active linear 0.10s;
-  background-size: 27px;
+  animation: icon_size_active linear 0.15s;
+  background-size: 25px;
 }
 
 @keyframes icon_size_active{
   from{
     background-size: 20px;
   }
-  to{background-size: 27px;}
+  to{background-size: 25px;}
 }
 @keyframes icon_size{
   from{
-    background-size: 27px;
+    background-size: 25px;
   }
   to{background-size: 20px;}
 }
 .page {
+  animation: _opacity linear 0.2s;
     display: none;
+    opacity: 1;
 }
 .page.start-page {
+  opacity: 1;
   display: block;
 }
-
+@keyframes _opacity{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
 /*    Material Design Switches   */
 /*______________*/
 .switch:hover{
