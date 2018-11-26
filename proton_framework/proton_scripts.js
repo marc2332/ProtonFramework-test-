@@ -197,10 +197,13 @@ class Bar extends  HTMLElement {
                 buttons[i].setAttribute("onClick","launchPage(event,'"+tabs[i]+"');");
                 if(this.getAttribute(tabs[i]+'-icon')!=null)style += "background-image: url('"+this.getAttribute(tabs[i]+"-icon")+"'); background-repeat: no-repeat; background-position:center;";
                 if(this.getAttribute("text")=="hidden") style += "font-size: 0px";
-                bar.appendChild(buttons[i]);
                 bar.classList.add("tab");
                 this.classList.remove("tab");
                 buttons[i].style = style;
+                if(document.getElementsByClassName("start-page")[0].id ==tabs[i]) buttons[i].classList.add("active"); 
+     
+            
+                bar.appendChild(buttons[i]);
             }
         }else{
             var title = document.createElement("p");
@@ -227,7 +230,7 @@ class Bar extends  HTMLElement {
             $error("There isn't a position for a Bar Component defined as '"+config["position"]+"'");
         }
         if(bars=2){
-            html.style = " padding: 50px 0px 80px 0px; ";
+            html.style = " padding: 50px 0px 75px 0px; ";
         }
         bar.setAttribute("id",this.id);
         var previous = window.scrollY; /* Scroll detector */ 
@@ -266,9 +269,8 @@ function launchPage(evt, page) {
     {
         $error("There isn't any page called < "+page+" >");
     }else{
-
-    }
     document.getElementById(page).style.display = "block";
+    }
     evt.currentTarget.className += " active";
 }
   window.customElements.define('proton-bar', Bar);

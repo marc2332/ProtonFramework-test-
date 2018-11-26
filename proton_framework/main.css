@@ -445,7 +445,7 @@ p{
 .page {
     display: none;
 }
-.page.home {
+.page.start-page {
   display: block;
 }
 
