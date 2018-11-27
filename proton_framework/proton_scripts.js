@@ -7,7 +7,7 @@ window.onload = function(){
         var style= document.createElement('script');
         style.innerHTML = "var buttons = document.getElementsByClassName('ripple'); Array.prototype.forEach.call(buttons, function (b) {b.addEventListener('click', newRipple); }); function newRipple (e) {  var circle = document.createElement('div'); this.appendChild(circle); var d = Math.max(this.clientWidth, this.clientHeight); circle.style.width = circle.style.height = d + 'px'; var rect = this.getBoundingClientRect(); circle.style.left=e.clientX-rect.left-d/2+'px'; circle.style.top=e.clientY-rect.top-d/2+'px'; circle.classList.add('ripple');}";
         document.body.appendChild(style);                                                                                                               
-        Main(); //Run user code
+        Main(); //Runs user code
         if($configApp['title']=="undefined"){
             document.title = 'New Project';  //Default title
         }else{

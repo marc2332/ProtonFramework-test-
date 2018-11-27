@@ -13,7 +13,7 @@ function Main(){
         RippleEffect : 'Purple'
     }
     newTheme(colors);
-    setTheme("Orange");
+    setTheme("Blue");
 
 }
 var _counter = 0;
