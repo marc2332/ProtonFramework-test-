@@ -13,6 +13,15 @@ window.onload = function(){
         }else{
             document.title = $configApp['title'];
         }
+
+        if($configApp['disable_debugger']===true){
+            var text_error = "Change 'disable_debugger' to 'true' to ignore the errors found by the debugger.<br>";
+            var error_bar = document.createElement("div");
+            var error_text = document.createElement("p");
+            error_bar.classList.add("Error-Bar","disabled");
+            document.querySelector("html").appendChild(error_bar);
+            error_bar.appendChild(error_text);
+        }
 }
 const root = document.documentElement;
 const html = document.querySelector("html");
@@ -24,12 +33,6 @@ var SecondaryColors = [];
 var LightPrimaryColor = [];
 var BackgroundColor = [];
 var RippleEffectColor = [];
-var text_error = "Change 'disable_debugger' to 'true' to ignore the errors found by the debugger.<br>";
-var error_bar = document.createElement("div");
-var error_text = document.createElement("p");
-error_bar.classList.add("Error-Bar","disabled");
-document.querySelector("html").appendChild(error_bar);
-error_bar.appendChild(error_text);
 function setTheme(newTheme){
     switch(newTheme){
         case "Blue":
@@ -60,22 +63,29 @@ function setTheme(newTheme){
         root.style.setProperty('--BackgroundColor', "white");
         root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
         break;
+        case "Orange":
+        root.style.setProperty('--PrimaryColor', "#ff5722");
+        root.style.setProperty('--SecondaryColor', "#e64a19");
+        root.style.setProperty('--LightPrimaryColor', "#ffab91");
+        root.style.setProperty('--BackgroundColor', "white");
+        root.style.setProperty('--RippleEffect', "rgba(255,255,255,0.6)");
+        break;
         default:
-                for( i = 0; i < PrimaryColors.length; i++){ 
-                    if(Names[i] ==newTheme){
-                        root.style.setProperty('--PrimaryColor', PrimaryColors[i]);
-                        root.style.setProperty('--SecondaryColor', SecondaryColors[i]);
-                        root.style.setProperty('--LightPrimaryColor', LightPrimaryColor[i]);
-                        root.style.setProperty('--BackgroundColor', BackgroundColor[i]);
-                        root.style.setProperty('--RippleEffect', RippleEffectColor[i]);
-                    }else{
-                        $error("There isn't any theme called < "+newTheme+" >. Define it using 'newTheme()' method.");
-                    }
+            for( i = 0; i < PrimaryColors.length; i++){ 
+                if(Names[i] ==newTheme){
+                    root.style.setProperty('--PrimaryColor', PrimaryColors[i]);
+                    root.style.setProperty('--SecondaryColor', SecondaryColors[i]);
+                    root.style.setProperty('--LightPrimaryColor', LightPrimaryColor[i]);
+                    root.style.setProperty('--BackgroundColor', BackgroundColor[i]);
+                    root.style.setProperty('--RippleEffect', RippleEffectColor[i]);
+                }else{
+                    $error("There isn't any theme called < "+newTheme+" >. Define it using 'newTheme()' method.");
                 }
+            }
     }
 }
 function $error(error){ 
-    if($configApp["disable_debugger"]){}else{
+    if($configApp["disable_debugger"]===false){
         console.error("$ProtonDebugger ~ "+error);
         text_error = text_error + "<br>"+error;
         error_text.innerHTML = text_error;
@@ -98,30 +108,26 @@ function getState(element){
     if(document.getElementById(element).classList.contains("switch")) var object = "switch";
     if(document.getElementById(element).childNodes[0].classList.contains("button")) var object = "button";
     switch(object){
-       case "switch":
-            var ele = document.getElementById(element);
-            if( ele.classList.contains("desactivated")) {
-                return false;
-            }else if(ele.classList.contains("activated")){
-                return true;
-            }
-            break;
+        case "switch":
+        if(document.getElementById(element).classList.contains("disabled")){
+            return "diabled";
+        }else{
+            return document.getElementById(element).classList.contains("activated")
+        }
+        break;
         case "button":
-            return "activated";
-            break;
+            return document.getElementById(element).childNodes[0].classList.contains("disabled");
+        break;
     }
 }
 function toggleState(id){
-    if(document.getElementById(id).childNodes[0].classList.contains("switch")) var object = "switch";
-    switch(object){
+    switch(document.getElementById(id).childNodes[0].classList.contains("switch")){
         case "switch":
             var element = document.getElementById(id).childNodes[0];
             if(element.classList.contains("activated")){
-                element.classList.remove("activated");
-                element.classList.add("desactivated");
+                element.replace("activated","desactivated");
             }else{
-                element.classList.remove("desactivated");
-                element.classList.add("activated");
+                element.replace("activated","desactivated");
             }
         break;
         default:
@@ -148,7 +154,7 @@ class Switch extends  HTMLElement {
         body.setAttribute("class",this.getAttribute("class")+" switch");
         body.setAttribute("id",this.id);
         dot.setAttribute("class","dot_switch");
-        if(this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('fluent-design') || this.classList.contains('proton-design') ){}else{
+        if((this.classList.contains('material-design') || this.classList.contains('material-design-outlined') || this.classList.contains('proton-design') ) ===false){
             $error("There isn't any design defined on element by ID < "+this.id+" >");
         }
         if((this.classList.contains('activated') || this.classList.contains('desactivated'))===false  ){

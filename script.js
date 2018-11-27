@@ -1,4 +1,3 @@
-
 function Main(){
     config = {
         title : 'Test',
@@ -14,7 +13,7 @@ function Main(){
         RippleEffect : 'Purple'
     }
     newTheme(colors);
-    setTheme("Purple");
+    setTheme("Orange");
 
 }
 var _counter = 0;
@@ -39,6 +38,11 @@ function onChange(element){
         case "test4":
             if(getState('test4')){
                     setTheme("Purple");
+            }
+        break;
+        case "test5":
+            if(getState('test5')){
+                    setTheme("Orange");
             }
         break;
         case "fbtn1":
