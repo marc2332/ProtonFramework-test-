@@ -196,6 +196,7 @@ class Bar extends  HTMLElement {
             var buttons = [];
             tabs = tabs.split(" ");
             for(i= 0; i<tabs.length; i++){
+
                 var style = "";
                 buttons.push(document.createElement("button"));
                 buttons[i].classList.add("tabButton","button", "ripple");
@@ -292,17 +293,16 @@ class Button extends  HTMLElement {
         if((this.classList.contains('material-design') || this.classList.contains('material-design-outlined') ||  this.classList.contains('proton-design') )===false){
             $error("There isn't any theme defined on element by ID < "+this.id+" >  ");
         }
-        button.setAttribute("onClick","goButton(this)");
         button.innerHTML = this.getAttribute("value");
         button.setAttribute("id",this.id);
         this.appendChild(button);    
         this.removeAttribute('id');
+        button.addEventListener('click', function(){
+            if(this.classList.contains("disabled")===false) onChange(this.id);
+        });
        }
 }
 window.customElements.define('proton-button', Button);
-function goButton(element){
-    if(element.classList.contains("disabled")===false) onChange(element.id);
-}
 class Spinner extends  HTMLElement {
     constructor() {
         super();
@@ -327,7 +327,6 @@ class FloatingButton extends  HTMLElement {
         }else{
             button.setAttribute("class"," FloatingButton "+this.getAttribute("class"));
         }
-        button.setAttribute("onClick","goFloatingButton(this)");
         button.setAttribute("id",this.id);
         if(this.getAttribute("text")== null){
             button.innerHTML = ".";
@@ -338,10 +337,10 @@ class FloatingButton extends  HTMLElement {
         }
         this.appendChild(button);    
         this.removeAttribute('id');       
-       }
-  }
+        button.addEventListener('click', function(){
+            if(this.classList.contains("disabled")=== false) onChange(this.id);   
+        });
+   }
+}
 window.customElements.define('proton-floating-button', FloatingButton);
-function goFloatingButton(element){
-    if(element.classList.contains("disabled")===false) onChange(element.id);      
-} 
 

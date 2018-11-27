@@ -363,38 +363,22 @@ p{
     }
 }
 .bar.top.godown{
-    animation: godown-top linear 0.20s;
+    transition: 0.23s;
     top:0px;
 }
 .bar.bottom.godown{
-    animation: goup-bottom linear 0.20s;
+    transition: 0.23s;
     bottom:-100px;
 }
 .bar.top.goup{
-    animation: goup-top linear 0.20s;
+    transition: 0.23s;
     top:-100px;
 }
 .bar.bottom.goup{
-    animation: godown-bottom linear 0.20s;
+    transition: 0.23s;
     bottom:0px;
 }
 
-@keyframes goup-top{
-    from{top:0px;}
-    to{top:-100px;}
-}
-@keyframes godown-top{
-    from{top:-100px;}
-    to{top:0;}
-}
-@keyframes goup-bottom{
-    from{bottom:0px;}
-    to{bottom:-100px;}
-}
-@keyframes godown-bottom{
-    from{bottom:-100px;}
-    to{bottom:0px;}
-}
 
 .tab {
    z-index: 50; 
@@ -405,15 +389,13 @@ p{
     
 }
 .tab > *{
-  margin: 0 auto;
+    margin: 0 auto;
     -webkit-flex: 1;  /* Safari 6.1+ */
     -ms-flex: 1;  /* IE 10 */    
     flex: 1;
 }
-
 .tab button{
-  transition: 0.3s;
-  animation: icon_size linear 0.15s;
+  transition: 0.2s;
   margin: 0;
   color: white;
   z-index: 55; 
@@ -435,22 +417,11 @@ p{
 }
 .tab button.active{
   opacity: 1;
-  animation: icon_size_active linear 0.15s;
+  transition: 0.2s;
   background-size: 25px;
 }
 
-@keyframes icon_size_active{
-  from{
-    background-size: 20px;
-  }
-  to{background-size: 25px;}
-}
-@keyframes icon_size{
-  from{
-    background-size: 25px;
-  }
-  to{background-size: 20px;}
-}
+
 .page {
   animation: _opacity linear 0.2s;
     display: none;
@@ -490,54 +461,37 @@ p{
 }
 
 .activated.material-design.switch {
+    transition: 0.17s;
     background: var(--LightPrimaryColor);
 }
 .activated.material-design.switch > .dot_switch{
-    animation: activating-switch-dot linear 0.15s;
+    transition: 0.17s;
     background: var(--PrimaryColor);
     left:12px;
 }
 .desactivated.material-design.switch {
+    transition: 0.17s;
     background: darkgray;
 }
 
 .desactivated.material-design.switch > .dot_switch{
-    animation: desactivating-switch-dot linear 0.15s;
+    transition: 0.17s;
     background: gray;
    left:-7px;
 }
 
 .disabled.material-design.switch{
+    transition: 0.17s;
     background: lightgray;
     box-sizing: border-box;
 }
 .disabled.switch.material-design.desactivated > div {
-    animation: desactivating-switch-dot  linear 0.15s;
+    transition: 0.17s;
     background-color: gray;
     left:-7px;
     position: relative;
 }
 
-@keyframes activating-switch-dot{
-    from{
-        background: gray;
-        left:-5px;
-    }
-    to{
-        background: var(--PrimaryColor);
-       left:12px;
-    }
-}
-@keyframes desactivating-switch-dot{
-    from{
-        background: var(--PrimaryColor);
-        left:10px;
-    }
-    to{
-        background: gray;
-       left:-7px;
-    }
-}
 /*    Material Design Outlined Switches   */
 /*______________*/
 
@@ -562,7 +516,7 @@ p{
     border: 2.5px solid var(--LightPrimaryColor);
 }
 .activated.material-design-outlined.switch > .dot_switch{
-    animation: activating-switch-dot-outlined linear 0.15s;
+    transition: 0.17s;  
     background: var(--PrimaryColor);
     left:9.5px;
 }
@@ -572,7 +526,7 @@ p{
 }
 
 .desactivated.material-design-outlined.switch > .dot_switch{
-    animation: desactivating-switch-dot-outlined linear 0.15s;
+    transition: 0.17s;
     background: gray;
    left:-9.5px;
 }
@@ -583,32 +537,12 @@ p{
     box-sizing: border-box;
 }
 .disabled.switch.material-design-outlined.desactivated > div {
-    animation: desactivating-switch-dot-outlined  linear 0.15s;
+    transition: 0.13s;
     background-color: gray;
     left:-9.5px;
     position: relative;
 }
-@keyframes activating-switch-dot-outlined{
-    from{
-        background: gray;
-        left:-9.5px;
-    }
-    to{
-        background: var(--PrimaryColor);
-       left:9px;
-    }
-}
 
-@keyframes desactivating-switch-dot-outlined{
-    from{
-        background: var(--PrimaryColor);
-        left:7px;
-    }
-    to{
-        background: gray;
-       left:-9.5px;
-    }
-}
 /*    Proton Design  Switches   */
 /*______________*/
 
@@ -635,7 +569,7 @@ p{
 }
 .activated.proton-design.switch > .dot_switch{
     top: 4px;
-    animation: activating-switch-dot-proton-design linear 0.15s;
+    transition: 0.13s;
     background: var(--PrimaryColor);
     left:17px;
     
@@ -646,7 +580,7 @@ p{
 }
 
 .desactivated.proton-design.switch > .dot_switch{
-    animation: desactivating-switch-dot-proton-design  linear 0.15s;
+    transition: 0.13s;
     background: #4d4d4d;
     left:3px;
     position: relative;
@@ -657,29 +591,12 @@ p{
     box-sizing: border-box;
 }
 .disabled.switch.proton-design.desactivated > div {
-    animation: desactivating-switch-dot-proton-design  linear 0.15s;
     background-color: gray;
     left:3px;
     position: relative;
     top: 1px; 
 }
-@keyframes activating-switch-dot-proton-design {
-    from{
-        left:3px;
-    }
-    to{
-       left:17px;
-       
-    }
-}
-@keyframes desactivating-switch-dot-proton-design {
-    from{
-        left:17px;
-    }
-    to{
-       left:3px;
-    }
-}
+
 
 /*  Floating Button   */
 /*______________*/
@@ -755,7 +672,7 @@ p{
     color: white;
 }
 .button.material-design:not(.disabled){
-    animation: button-material-design-hover-out linear 0.1s;
+    transition: 0.2s;
     height: auto;
     width: auto ;
     background: var(--PrimaryColor);
@@ -767,8 +684,14 @@ p{
 
 }
 .button.material-design:hover:not(.disabled){
-    
+    transition: 0.2s;
     background: var(--LightPrimaryColor);
+    box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
+    cursor: pointer;
+     
+}
+.button.material-design:active:not(.disabled){
+    
     background: var(--LightPrimaryColor);
     animation: button-material-design-hover-in linear 0.1s;
     box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
@@ -786,27 +709,6 @@ p{
     margin:0px 5px;
 }
 
-
-@keyframes button-material-design-hover-in{
-    from {
-        
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-        
-    }
-    to{
-        box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
-    }
-}
-@keyframes button-material-design-hover-out{
-    from {
-        background: var(--LightPrimaryColor);
-        box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
-    }
-    to{
-        background: var(--PrimaryColor);
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-    }
-}
 /*  Material Design Outlined Button   */
 /*______________*/
 .button{
@@ -817,6 +719,7 @@ p{
     color: white;
 }
 .button.material-design-outlined:not(.disabled){
+   transition: 0.2s;
     animation: button-material-design-outlined-hover-out linear 0.1s;
     height: auto;
     width: auto;
@@ -832,6 +735,7 @@ p{
 }
 
 .button.material-design-outlined:hover:not(.disabled){
+   transition: 0.2s;
     animation: button-material-design-outlined-hover-in linear 0.1s;
      border: 4px solid var(--LightPrimaryColor);
      background: var(--LightPrimaryColor);
@@ -840,6 +744,7 @@ p{
      box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
 }
 .button.material-design-outlined.disabled{
+  transition: 0.2s;
     height: auto;
     width: auto;
     background: #4d4d4d;
@@ -854,30 +759,11 @@ p{
 
 }
 
-@keyframes button-material-design-outlined-hover-in{
-    from {
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-        
-    }
-    to{
-        box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
-    }
-}
-@keyframes button-material-design-outlined-hover-out{
-    from {
-         border: 4px solid var(--LightPrimaryColor);
-        box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
-    }
-    to{
-        border: 4px solid var(--PrimaryColor);
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-    }
-}
+
 /*  Proton Design Button   */
 /*______________*/
 .button.proton-design:not(.disabled){
-  transition: 0.2s;
-    animation: button-proton-design-hover-out linear 0.1s;
+  transition: 0.1s;
     height: auto;
     width: auto ;
     border: 2px solid var(--PrimaryColor);
@@ -896,15 +782,14 @@ p{
     color: white;
 }
 .button.proton-design:hover:not(.disabled){
-    animation: button-proton-design-hover-in linear 0.1s;
+    transition: 0.1s;
     background: var(--PrimaryColor);
     cursor: pointer;
      box-shadow: 0px 3px 7px rgba(0,0,0,0.5);
      color:white;
 }
 .button.proton-design:active:not(.disabled){
-  transition: 0.2s;
-    animation: button-proton-design-hover-in linear 0.1s;
+  transition: 0.1s;
     background: var(--LightPrimaryColor);
     border: 2px solid var(--LightPrimaryColor);
     cursor: pointer;
@@ -912,6 +797,7 @@ p{
      color:white;
 }
 .button.proton-design.disabled{
+    transition: 0.1s;
     height: auto;
     width: auto;
     background: #4d4d4d;
@@ -922,24 +808,3 @@ p{
 }
 
 
-@keyframes button-proton-design-hover-in{
-    from {
-        background: transparent;
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-        
-    }
-    to{
-        background: var(--PrimaryColor);
-        box-shadow: 0px 2px 5px rgba(0,0,0,0.0.4);
-    }
-}
-@keyframes button-proton-design-hover-out{
-    from {
-        background: var(--PrimaryColor);
-        box-shadow: 0px 2px 5px rgba(0,0,0,0.0.4);
-    }
-    to{
-        background: transparent;
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-    }
-}
