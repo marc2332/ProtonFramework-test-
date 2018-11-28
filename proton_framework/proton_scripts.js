@@ -294,7 +294,6 @@ function launchPage(evt, page) {
             for(i=0;i<bars.length;i++)
             {
                 bars[i].classList.replace("goup","godown");
-                console.log(bars[i]);
             }
             window.scrollTo(0, 0);
         }

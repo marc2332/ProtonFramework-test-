@@ -14,6 +14,6 @@
 @import "proton_framework/positions.css";
 */
 
-#fbtn1{
+#fbtn1 , #fbtn2 , #fbtn3{
     bottom: 80px;
 }
