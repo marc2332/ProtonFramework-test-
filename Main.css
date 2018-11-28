@@ -17,3 +17,11 @@
 #fbtn1 , #fbtn2 , #fbtn3{
     bottom: 80px;
 }
+:root{
+    --PrimaryColor: #6200ea;
+    --LightPrimaryColor:  #673ab7;
+    --SecondaryColor:  #b388ff;
+    --BasicColor: white;
+    --BackgroundColor: white;
+    --RippleEffect: white;
+}

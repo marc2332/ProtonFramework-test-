@@ -272,8 +272,15 @@ class Bar extends  HTMLElement {
 function launchPage(evt, page) {
             var ripplesToDelete = document.getElementsByClassName("ripple"); //Clean already created ripple divs
             var bars = document.getElementsByClassName("dynamic-bar");
+            var bb = 0;
+            var ripples = [];
             for(i=0; i < ripplesToDelete.length; i++){
-                if(ripplesToDelete[i].classList.length=="1") ripplesToDelete[i].remove();
+                if(ripplesToDelete[i].classList.length==1) {
+                    ripples.push(ripplesToDelete[i]);
+                }
+            }   
+            for(i=0; i < ripples.length; i++){
+                ripples[i].remove();
             }
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("page");
