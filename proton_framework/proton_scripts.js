@@ -3,6 +3,14 @@ var $configApp = {   /* DEFAULT VALUES */
     title: 'New Project',
     version: '0.0.1'  
 }
+if($configApp['disable_debugger']===false){
+            var text_error = "Change 'disable_debugger' to 'true' to ignore the errors found by the debugger.<br>";
+            var error_bar = document.createElement("div");
+            var error_text = document.createElement("p");
+            error_bar.classList.add("Error-Bar","disabled");
+            document.querySelector("html").appendChild(error_bar);
+            error_bar.appendChild(error_text);
+}
 window.onload = function(){
         var style= document.createElement('script');
         style.innerHTML = "var buttons = document.getElementsByClassName('ripple'); Array.prototype.forEach.call(buttons, function (b) {b.addEventListener('click', newRipple); }); function newRipple (e) {  var circle = document.createElement('div'); this.appendChild(circle); var d = Math.max(this.clientWidth, this.clientHeight); circle.style.width = circle.style.height = d + 'px'; var rect = this.getBoundingClientRect(); circle.style.left=e.clientX-rect.left-d/2+'px'; circle.style.top=e.clientY-rect.top-d/2+'px'; circle.classList.add('ripple');}";
@@ -14,14 +22,7 @@ window.onload = function(){
             document.title = $configApp['title'];
         }
 
-        if($configApp['disable_debugger']===true){
-            var text_error = "Change 'disable_debugger' to 'true' to ignore the errors found by the debugger.<br>";
-            var error_bar = document.createElement("div");
-            var error_text = document.createElement("p");
-            error_bar.classList.add("Error-Bar","disabled");
-            document.querySelector("html").appendChild(error_bar);
-            error_bar.appendChild(error_text);
-        }
+        
 }
 const root = document.documentElement;
 const html = document.querySelector("html");
@@ -195,6 +196,7 @@ class Bar extends  HTMLElement {
             using_tabs = " tab";
             var buttons = [];
             tabs = tabs.split(" ");
+            console.log(bar);
             for(i= 0; i<tabs.length; i++){
 
                 var style = "";
@@ -202,9 +204,18 @@ class Bar extends  HTMLElement {
                 buttons[i].classList.add("tabButton","button", "ripple");
                 buttons[i].innerHTML= tabs[i];
                 buttons[i].setAttribute("onClick","launchPage(event,'"+tabs[i]+"');");
-                if(this.getAttribute(tabs[i]+'-icon')!=null)style += "background-image: url('"+this.getAttribute(tabs[i]+"-icon")+"'); background-repeat: no-repeat; background-position:center;";
+                
+                if(this.getAttribute(tabs[i]+'-icon')!=null) {
+                    if(this.getAttribute("text")=="hidden") {
+                        style += "background-image: url('"+this.getAttribute(tabs[i]+"-icon")+"'); background-repeat: no-repeat; background-position: center ;";
+
+                    
+                    }else{
+                        style += "background-image: url('"+this.getAttribute(tabs[i]+"-icon")+"'); background-repeat: no-repeat; background-position: 50% 30% ;";
+                        buttons[i].classList.add("showed-text");
+                    }
+                }
                 if(this.getAttribute("text")=="hidden") style += "font-size: 0px";
-                bar.classList.add("tab");
                 this.classList.remove("tab");
                 buttons[i].style = style;
                 if(document.getElementsByClassName("start-page")[0].id ==tabs[i]) buttons[i].classList.add("active"); 
@@ -220,16 +231,16 @@ class Bar extends  HTMLElement {
         else{var position = this.getAttribute('position');}
         if(position == "top"){
             html.style = " padding: 50px 0px 0px 0px; ";
-            bar.className   = position + " bar godown" +using_tabs;
+            bar.className   += position + " dynamic-bar  bar godown" +using_tabs;
         }else if(position == "bottom"){
             html.style = " padding: 25px 0px 80px 0px; ";
-            bar.className   = position + " bar goup" +using_tabs ;
+            bar.className   += position + " dynamic-bar  bar goup" +using_tabs ;
         }else if(position == "top-fixed"){
             html.style = " padding: 50px 0px 0px 0px; ";
-            bar.className   = "top" + " bar " +using_tabs;
+            bar.className   += " top  bar " +using_tabs;
         }else if(position == "bottom-fixed"){
             html.style = " padding: 25px 0px 80px 0px; ";
-            bar.className   = "bottom" + " bar " +using_tabs;
+            bar.className   += " bottom bar " +using_tabs;
         }else{
             $error("There isn't any position for the Bar Component with id < "+this.id+" > defined as '"+position+"'");
         }
@@ -246,38 +257,48 @@ class Bar extends  HTMLElement {
                 previous = window.scrollY;
                 if(previous>35){
                     bar.setAttribute("class","bar top "+direction +using_tabs );  
+                }else{
+                    bar.setAttribute("class","bar top godown" +using_tabs ); 
                 }
             }else if(position=="bottom"){
                 window.scrollY > previous ?  direction= "godown":  direction= "goup";
                 previous = window.scrollY;
                 bar.setAttribute("class","bar bottom "+direction  +using_tabs);               
             }
-        });    
+        });
         this.removeAttribute('id');
     }
 }
 function launchPage(evt, page) {
-    var ripplesToDelete = document.getElementsByClassName("ripple"); //Clean already created ripple divs
-    for(i=0; i < ripplesToDelete.length; i++){
-        if(ripplesToDelete[i].classList.length=="1") ripplesToDelete[i].remove();
-    }
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("page");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tabButton");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", " ");
-    }
-    if(document.body.contains(document.getElementById(page))===false) 
-    {
-        $error("There isn't any page called < "+page+" >");
-    }else{
-    document.getElementById(page).style.display = "block";
-    }
-    evt.currentTarget.className += " active";
-}
+            var ripplesToDelete = document.getElementsByClassName("ripple"); //Clean already created ripple divs
+            var bars = document.getElementsByClassName("dynamic-bar");
+            for(i=0; i < ripplesToDelete.length; i++){
+                if(ripplesToDelete[i].classList.length=="1") ripplesToDelete[i].remove();
+            }
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("page");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tabButton");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", " ");
+            }
+            if(document.body.contains(document.getElementById(page))===false) 
+            {
+                $error("There isn't any page called < "+page+" >");
+            }else{
+            document.getElementById(page).style.display = "block";
+            }
+            evt.currentTarget.className += " active";
+            for(i=0;i<bars.length;i++)
+            {
+                bars[i].classList.replace("goup","godown");
+                console.log(bars[i]);
+            }
+            window.scrollTo(0, 0);
+        }
+
   window.customElements.define('proton-bar', Bar);
 class Button extends  HTMLElement {
     constructor() {
