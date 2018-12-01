@@ -196,7 +196,6 @@ class Bar extends  HTMLElement {
             using_tabs = " tab";
             var buttons = [];
             tabs = tabs.split(" ");
-            console.log(bar);
             for(i= 0; i<tabs.length; i++){
 
                 var style = "";

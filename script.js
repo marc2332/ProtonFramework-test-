@@ -5,12 +5,12 @@ function Main(){
         disable_debugger : false
     }
     colors = {
-        Primary : 'Black',
-        Light: 'Red',
-        Secondary: 'Red',
-        Background: 'white',
-        Name : 'hey',
-        RippleEffect : 'Purple'
+        Name : 'random',
+        Primary : 'green',
+        Light: 'blue',
+        Secondary: 'red',
+        Background: 'purple',
+        RippleEffect : 'yellow'
     }
     newTheme(colors);
     setTheme("Purple");
@@ -46,8 +46,12 @@ function onChange(element){
             }
         break;
         case "fbtn1":
+
             _counter++;
             setText("counter",_counter);
+        break;
+        case "tryit":
+            setTheme("random");
         break;
 
     }
