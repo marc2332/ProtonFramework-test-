@@ -1,6 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
+ <html lang="en">
+ <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="/afari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<script src="upup.min.js"></script>
+<script>
+UpUp.start({
+  'content-url': 'index.html',
+  'assets': ['/proton_framework/proton_scripts.js', '/proton_framework/main.css', 'headlines.json'],
+  'service-worker-url': 'upup.sw.min.js'
+});
+</script>
     <meta name="Description" content="Proton Frontend Framework Project">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +26,7 @@
 
     <body>
         
-        <proton-bar id="bar1" position="top"  title="Proton Framework Example"></proton-bar> 
+        <proton-bar id="bar1" position="top"  title="Live Preview!!  "></proton-bar> 
         <proton-bar id="bar2" text=""  position="bottom-fixed" tabs="Inbox Ticks Build" Inbox-icon="inbox.svg" Ticks-icon="tick.svg" Build-icon="build.svg" class="tab">
             </proton-bar> 
                 <div id="Inbox" class="page start-page" style="width: auto; height: auto;">
@@ -104,7 +117,175 @@
                 <div style="height: auto; width: auto;" class="section-noborder">
                     <p>disabled switch</p>
                     <proton-switch id="btn3" class=" material-design desactivated disabled" ></proton-switch>
+               </div>
+            </div>
+            <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
+                        <p class="title2">Lorem ipsum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <proton-button  class="material-design activated" value="Testing">
+                        </proton-button>
+                    </div>
+                    <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
+                        <p class="title2">Lorem ipsum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <proton-button  class="material-design activated" value="Testing">
+                        </proton-button>
+                    </div>
+    </div>
+    <div id="Build" class="page" style="width: auto; height: auto;">
+           <proton-floating-button icon-src="build.svg" class=" pos-bottom pos-right  normal" id="fbtn3" ></proton-floating-button>
+            
+            <div style="height:90%; width: 90% ;padding:10px;" class="center card proton-design">
+                <p class="title2 center-elements">Third page</p>
+                <div style="height: auto; width: auto;" class="section-noborder">
+                    <p> this one is a proton button </p>
+                    <proton-button id="btn4" class=" proton-design activated" value="hi"></proton-button>
                 </div>
+                <div style="height: auto; width: auto;" class="section">
+                    <p>activated switch</p>
+                    <proton-switch id="btn5" class=" material-design activated "></proton-switch>
+                </div>
+            </div>
+            <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design" >
+                        <p class="title2">Lorem ipsum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <proton-button  class="proton-design activated" value="Testing">
+                        </proton-button>
+                    </div>
+                    <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design" >
+                        <p class="title2">Lorem ipsum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <proton-button  class="proton-design activated" value="Testing">
+                        </proton-button>
+                    </div>
+    </div>
+</html><script> var ppath ='C:\\Users\\mespi\\Desktop\\Project\\index.html';</script>  <!DOCTYPE html>
+<html lang="en">
+
+    <meta name="Description" content="Proton Frontend Framework Project">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link async rel="stylesheet" href="proton_framework/main.css" type="text/css" >
+    <script async rel="preload "src="proton_framework/proton_scripts.js" ></script>
+    <link async rel="stylesheet" href="Main.css" type="text/css" >
+    <script async src="script.js"></script>
+
+    <body>
+        
+        <proton-bar id="bar1" position="top"  title="Live Preview!!  ok"></proton-bar> 
+        <proton-bar id="bar2" text=""  position="bottom-fixed" tabs="Inbox Ticks Build" Inbox-icon="inbox.svg" Ticks-icon="tick.svg" Build-icon="build.svg" class="tab">
+            </proton-bar> 
+                <div id="Inbox" class="page start-page" style="width: auto; height: auto;">
+                    <div style="height:90%; width: 90% ;padding:10px;" class="center card proton-design" >
+                    <proton-floating-button icon-src="plus_icon.svg" class=" pos-bottom pos-left  normal" id="fbtn1" ></proton-floating-button>
+                    <div style="height: auto; width: auto;" class="section-noborder">
+                        <p class="">Themes</p>
+                    </div>
+                    <div style="height: auto; width: auto;" class="section-noborder">
+                        <p>Switch to Red theme</p>
+                        <proton-switch id="test1" class="activated material-design-outlined"></proton-switch>
+                    </div>
+                    <div style="height: auto; width: auto; " class="section-noborder">
+                        <p>Switch to Green theme</p>
+                        <proton-switch id="test2" class="desactivated material-design"></proton-switch>
+                    </div>
+                     <div style="height: auto; width: auto; " class="section-noborder">
+                        <p>Switch to Blue theme</p>
+                        <proton-switch id="test3" class="activated material-design-outlined"></proton-switch>
+                    </div>
+                    <div style="height: auto; width: auto; " class="section-noborder">
+                        <p>Switch to Purple theme</p>
+                        <proton-switch id="test4" class="desactivated proton-design"></proton-switch>
+                    </div>
+                    <div style="height: auto; width: auto; " class="section-noborder">
+                        <p>Switch to Orange theme</p>
+                        <proton-switch id="test5" class="activated material-design"></proton-switch>
+                    </div><div style="height: auto; width: auto; " class="section-noborder"> </div>
+                    <div style="height: auto; width: auto; "  class=" center-elements center card  ">
+                        <p>Press the floating button to increase: </p>
+                        <p id="counter" class="title3">0</p>
+                    </div>
+                </div>
+                    <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
+                        <p class="title2">Lorem ipsum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <proton-button   class="material-design activated" value="Testing">
+                        </proton-button>
+                    </div>
+                    <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
+                        <p class="title3">newTheme()</p>
+                        <p>You can define a new theme using this code on your script.js</p>
+                        <pre> <code >
+                        colors = {
+                            Name : 'random',
+                            Primary : 'green',
+                            Light: 'blue',
+                            Secondary: 'red',
+                            Background: 'purple',
+                            RippleEffect : 'yellow'
+                        }
+                            newTheme(colors);
+                        </code></pre>
+                        <p class="title2">setTheme()</p>
+                        <p>Updating the whole page theme using setTheme() method:
+                        <pre><code>setTheme("random");</code></pre>
+                        <proton-button id="tryit" class="proton-design activated" value="Try it">
+                        </proton-button>
+                    </div>
+                    <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
+                        <p class="title2">Lorem ipsum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <proton-button  class="material-design activated" value="Testing">
+                        </proton-button>
+                    </div>
+
+                </div> 
+    </body>  
+    <div id="Ticks" class="page" style="width: auto; height: auto;">
+        <proton-floating-button icon-src="tick.svg" class=" pos-bottom pos-center  normal" id="fbtn2" ></proton-floating-button>
+            
+            <div style="height:90%; width: 90% ;padding:10px;" class="center card proton-design">
+                <p class="title2 center-elements">Second page</p>
+                <div style="height: auto; width: auto;" class="section-noborder">
+                    <p>and this one is a proton button </p>
+                    <proton-button id="btn2" class=" proton-design activated" value="testing :)"></proton-button>
+                </div>
+                <div style="height: auto; width: auto;" class="section-noborder">
+                    <p>disabled switch</p>
+                    <proton-switch id="btn3" class=" material-design desactivated disabled" ></proton-switch>
+               </div>
             </div>
             <div style="height:90%; width: 90% ;padding:10px;" class="center card material-design-outlined" >
                         <p class="title2">Lorem ipsum</p>

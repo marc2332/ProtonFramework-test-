@@ -111,7 +111,7 @@ function getState(element){
     switch(object){
         case "switch":
         if(document.getElementById(element).classList.contains("disabled")){
-            return "diabled";
+            return "disabled";
         }else{
             return document.getElementById(element).classList.contains("activated")
         }
